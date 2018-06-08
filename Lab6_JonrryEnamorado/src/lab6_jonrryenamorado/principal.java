@@ -46,6 +46,18 @@ public class principal extends javax.swing.JFrame {
         series1 = new javax.swing.JList<>();
         jScrollPane6 = new javax.swing.JScrollPane();
         peliculas1 = new javax.swing.JList<>();
+        register = new javax.swing.JDialog();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         tf_user = new javax.swing.JTextField();
@@ -97,6 +109,73 @@ public class principal extends javax.swing.JFrame {
                 .addContainerGap(39, Short.MAX_VALUE))
         );
 
+        jLabel1.setText("Registrar");
+
+        jLabel2.setText("User:");
+
+        jLabel3.setText("Password:");
+
+        jLabel4.setText("Correo:");
+
+        jLabel9.setText("Fecha de Nacimiento:");
+
+        jLabel10.setText("Tarjeta:");
+
+        javax.swing.GroupLayout registerLayout = new javax.swing.GroupLayout(register.getContentPane());
+        register.getContentPane().setLayout(registerLayout);
+        registerLayout.setHorizontalGroup(
+            registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(registerLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addGroup(registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10))
+                .addGroup(registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(registerLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField1)
+                            .addComponent(jTextField2)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)))
+                    .addGroup(registerLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField4)
+                            .addComponent(jTextField5))))
+                .addContainerGap(144, Short.MAX_VALUE))
+        );
+        registerLayout.setVerticalGroup(
+            registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(registerLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel1)
+                .addGap(39, 39, 39)
+                .addGroup(registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(96, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel6.setText("Password:");
@@ -109,6 +188,11 @@ public class principal extends javax.swing.JFrame {
         });
 
         jButton4.setText("Register");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
 
         jLabel7.setText("LOGIN");
 
@@ -171,7 +255,7 @@ public class principal extends javax.swing.JFrame {
 
             DefaultListModel modelo = (DefaultListModel) series1.getModel();
             DefaultListModel modelo2 = (DefaultListModel) peliculas1.getModel();
-            
+
             administrarseries ap = new administrarseries("./series.txt");
             administrarpeliculas apm = new administrarpeliculas("./peliculas.txt");
             try {
@@ -179,11 +263,11 @@ public class principal extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             for (int i = 0; i < ap.listaSerie.size(); i++) {
-                modelo.addElement(new serie(ap.listaSerie.get(i).getId(), ap.listaSerie.get(i).getNombre(), ap.listaSerie.get(i).getCategoria(), 
-                        ap.listaSerie.get(i).getIdiomas(), ap.listaSerie.get(i).getSubtitulos(),ap.listaSerie.get(i).getComentarios(),ap.listaSerie.get(i).getActores(), ap.listaSerie.get(i).getProductora(),
-                        ap.listaSerie.get(i).getDirector(), ap.listaSerie.get(i).getDuracion(),ap.listaSerie.get(i).getRating(),ap.listaSerie.get(i).getTemp()));
+                modelo.addElement(new serie(ap.listaSerie.get(i).getId(), ap.listaSerie.get(i).getNombre(), ap.listaSerie.get(i).getCategoria(),
+                        ap.listaSerie.get(i).getIdiomas(), ap.listaSerie.get(i).getSubtitulos(), ap.listaSerie.get(i).getComentarios(), ap.listaSerie.get(i).getActores(), ap.listaSerie.get(i).getProductora(),
+                        ap.listaSerie.get(i).getDirector(), ap.listaSerie.get(i).getDuracion(), ap.listaSerie.get(i).getRating(), ap.listaSerie.get(i).getTemp()));
             }
             try {
                 apm.cargarArchivo();
@@ -191,9 +275,9 @@ public class principal extends javax.swing.JFrame {
                 Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
             }
             for (int i = 0; i < apm.listaPelicula.size(); i++) {
-                modelo2.addElement(new pelicula(apm.listaPelicula.get(i).getId(), apm.listaPelicula.get(i).getNombre(), apm.listaPelicula.get(i).getCategoria(), 
-                        apm.listaPelicula.get(i).getIdiomas(),apm.listaPelicula.get(i).getSubtitulos(),apm.listaPelicula.get(i).getComentarios(),apm.listaPelicula.get(i).getActores(), apm.listaPelicula.get(i).getProductora(),
-                        apm.listaPelicula.get(i).getDirector(), apm.listaPelicula.get(i).getDuracion(),apm.listaPelicula.get(i).getRating()));
+                modelo2.addElement(new pelicula(apm.listaPelicula.get(i).getId(), apm.listaPelicula.get(i).getNombre(), apm.listaPelicula.get(i).getCategoria(),
+                        apm.listaPelicula.get(i).getIdiomas(), apm.listaPelicula.get(i).getSubtitulos(), apm.listaPelicula.get(i).getComentarios(), apm.listaPelicula.get(i).getActores(), apm.listaPelicula.get(i).getProductora(),
+                        apm.listaPelicula.get(i).getDirector(), apm.listaPelicula.get(i).getDuracion(), apm.listaPelicula.get(i).getRating()));
             }
             series1.setModel(modelo);
             peliculas1.setModel(modelo2);
@@ -204,6 +288,14 @@ public class principal extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+        register.setModal(true);
+        register.pack();
+        register.setLocationRelativeTo(this);
+        register.setVisible(true);
+    }//GEN-LAST:event_jButton4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -244,15 +336,27 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JDialog app;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     private javax.swing.JList<String> peliculas1;
     private javax.swing.JPasswordField pf_pass;
+    private javax.swing.JDialog register;
     private javax.swing.JList<String> series1;
     private javax.swing.JTextField tf_user;
     private javax.swing.JTree tree1;

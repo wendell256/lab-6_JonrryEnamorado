@@ -122,7 +122,7 @@ public class administrarpeliculas {
                 e.printStackTrace();
             }
             
-            System.out.println(listaPelicula);
+            
         }//fin if
             
             
