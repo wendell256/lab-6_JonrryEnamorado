@@ -17,13 +17,38 @@ public class pelicula {
     String nombre;
     String categoria;
     ArrayList<idioma> idiomas = new ArrayList();
-    ArrayList<sub> subtitulos = new ArrayList();
-    ArrayList<comments> comentarios = new ArrayList();
-    ArrayList<actores> actores = new ArrayList();
+    ArrayList<sub> subtitulos= new ArrayList();
+    ArrayList<comments> comentarios= new ArrayList();
+    ArrayList<actores> actores= new ArrayList();
     String productora;
     String director;
     String duracion;
     int rating;
+
+    public pelicula(int id, String nombre, String categoria, String productora, String director, String duracion, int rating) {
+        this.id = id;
+        this.nombre = nombre;
+        this.categoria = categoria;
+        this.productora = productora;
+        this.director = director;
+        this.duracion = duracion;
+        this.rating = rating;
+    }
+
+    public pelicula(int id, String nombre, String categoria, ArrayList<idioma> idiomas, ArrayList<sub> subtitulos, ArrayList<comments> comentarios, ArrayList<actores> actores, String productora, String director, String duracion, int rating) {
+        this.id = id;
+        this.nombre = nombre;
+        this.categoria = categoria;
+        this.idiomas = idiomas;
+        this.subtitulos = subtitulos;
+        this.comentarios = comentarios;
+        this.actores = actores;
+        this.productora = productora;
+        this.director = director;
+        this.duracion = duracion;
+        this.rating = rating;
+    }
+    
     
     public pelicula() {
     }

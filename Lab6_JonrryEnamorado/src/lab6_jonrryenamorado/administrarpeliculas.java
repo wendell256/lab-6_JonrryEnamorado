@@ -6,13 +6,10 @@
 package lab6_jonrryenamorado;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.StringTokenizer;
@@ -21,26 +18,24 @@ import java.util.StringTokenizer;
  *
  * @author wende
  */
-public class administrarseries {
-
-    public ArrayList<serie> listaSerie = new ArrayList();
+public class administrarpeliculas {
+    public ArrayList<pelicula> listaPelicula = new ArrayList();
     private File archivo = null;
 
-    public administrarseries(String path) {
-        
+    public administrarpeliculas(String path) {
         archivo = new File(path);
-        if(archivo.exists()){
-            System.out.println("true");
-        }
     }
 
-    public ArrayList<serie> getListaSerie() {
-        return listaSerie;
+    public ArrayList<pelicula> getListaPelicula() {
+        return listaPelicula;
     }
 
-    public void setListaSerie(ArrayList<serie> listaSerie) {
-        this.listaSerie = listaSerie;
+    public void setListaPelicula(ArrayList<pelicula> listaPelicula) {
+        this.listaPelicula = listaPelicula;
     }
+
+   
+    
 
     public File getArchivo() {
         return archivo;
@@ -52,57 +47,20 @@ public class administrarseries {
 
     @Override
     public String toString() {
-        return "Serie" + listaSerie;
+        return "Pelicula" + listaPelicula;
     }
-
-    public void setSerie(serie p) {
-        this.listaSerie.add(p);
-
-    }
-
-    public void escribirArchivo() throws IOException {
-        FileWriter fw = null;
-        BufferedWriter bw = null;
-        try {
-            fw = new FileWriter(archivo, false);
-            bw = new BufferedWriter(fw);
-            for (serie t : listaSerie) {
-                bw.write(t.getId() + ";");
-                bw.write(t.getNombre() + ";");
-                bw.write(t.getCategoria() + ";");
-                for (idioma i : t.getIdiomas()) {
-                    bw.write(i.getIdioma() + ",");
-                }
-                for (sub i : t.getSubtitulos()) {
-                    bw.write(i.getSub() + ",");
-                }
-                for (comments i : t.getComentarios()) {
-                    bw.write(i.getComentario() + ",");
-                }
-                for (actores i : t.getActores()) {
-                    bw.write(i.getActores() + ",");
-                }
-
-                bw.write(";");
-                bw.write(t.getProductora() + ";");
-                bw.write(t.getDirector() + ";");
-                bw.write(t.getDuracion() + ";");
-                bw.write(t.getRating() + ";");
-                bw.write(t.getTemp() + ";"+"-");
-
-            }
-            bw.flush();
-        } catch (Exception e) {
-        }
-        bw.close();
-        fw.close();
+    
+    
+    
+    public void setPelicula(pelicula p) {
+        this.listaPelicula.add(p);
 
     }
-
-    public void cargarArchivo() throws FileNotFoundException, IOException {
+    
+     public void cargarArchivo() throws FileNotFoundException, IOException {
         
         Scanner sc = null;
-        listaSerie = new ArrayList();
+        listaPelicula = new ArrayList();
        
        
         FileReader r = new FileReader(archivo);
@@ -112,14 +70,12 @@ public class administrarseries {
         if (archivo.exists()) {
             try {
                 
-                sc = new Scanner(archivo);
                 
-                sc.useDelimiter(";");
                 
                 while (token.hasMoreTokens()) {
                    
                     StringTokenizer token2 = new StringTokenizer(token.nextToken() , ";");
-                    int id, rating, temp;
+                    int id, rating;
                     String nombre, categoria, productora, director, duracion;
                     ArrayList<idioma> idioma = new ArrayList();
                     ArrayList<sub> sub = new ArrayList();
@@ -153,20 +109,23 @@ public class administrarseries {
                     director = token2.nextToken();
                     duracion = token2.nextToken();
                     rating = Integer.parseInt(token2.nextToken());
-                    temp = Integer.parseInt(token2.nextToken());
-                    listaSerie.add(new serie(id,nombre,categoria,productora,director,duracion,rating,temp));
-                    listaSerie.get(listaSerie.size() - 1).setIdiomas(idioma);
-                    listaSerie.get(listaSerie.size() - 1).setSubtitulos(sub);
-                    listaSerie.get(listaSerie.size() - 1).setComentarios(comments);
-                    listaSerie.get(listaSerie.size() - 1).setActores(actores);
+                    
+                    listaPelicula.add(new pelicula(id,nombre,categoria,productora,director,duracion,rating));
+                    listaPelicula.get(listaPelicula.size() - 1).setIdiomas(idioma);
+                    listaPelicula.get(listaPelicula.size() - 1).setSubtitulos(sub);
+                    listaPelicula.get(listaPelicula.size() - 1).setComentarios(comments);
+                    listaPelicula.get(listaPelicula.size() - 1).setActores(actores);
                     
                 }//fin persona
             } catch (Exception e) {
                 System.out.println("exception");
+                e.printStackTrace();
             }
-            sc.close();
+            
+            System.out.println(listaPelicula);
         }//fin if
             
             
     }
+    
 }

@@ -5,6 +5,9 @@
  */
 package lab6_jonrryenamorado;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 
 /**
@@ -20,8 +23,9 @@ public class principal extends javax.swing.JFrame {
     String pass = "123";
 
     public principal() {
-
         initComponents();
+        tf_user.setText(admin);
+        pf_pass.setText(pass);
 
     }
 
@@ -166,14 +170,33 @@ public class principal extends javax.swing.JFrame {
         if (tf_user.getText().equals(admin) && pf_pass.getText().equals(pass)) {
 
             DefaultListModel modelo = (DefaultListModel) series1.getModel();
-            administrarseries ap = new administrarseries("./texts/series.txt");
-            ap.cargarArchivo();
+            DefaultListModel modelo2 = (DefaultListModel) peliculas1.getModel();
+            
+            administrarseries ap = new administrarseries("./series.txt");
+            administrarpeliculas apm = new administrarpeliculas("./peliculas.txt");
+            try {
+                ap.cargarArchivo();
+            } catch (IOException ex) {
+                Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
             for (int i = 0; i < ap.listaSerie.size(); i++) {
                 modelo.addElement(new serie(ap.listaSerie.get(i).getId(), ap.listaSerie.get(i).getNombre(), ap.listaSerie.get(i).getCategoria(), 
                         ap.listaSerie.get(i).getIdiomas(), ap.listaSerie.get(i).getSubtitulos(),ap.listaSerie.get(i).getComentarios(),ap.listaSerie.get(i).getActores(), ap.listaSerie.get(i).getProductora(),
                         ap.listaSerie.get(i).getDirector(), ap.listaSerie.get(i).getDuracion(),ap.listaSerie.get(i).getRating(),ap.listaSerie.get(i).getTemp()));
             }
+            try {
+                apm.cargarArchivo();
+            } catch (IOException ex) {
+                Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            for (int i = 0; i < apm.listaPelicula.size(); i++) {
+                modelo2.addElement(new pelicula(apm.listaPelicula.get(i).getId(), apm.listaPelicula.get(i).getNombre(), apm.listaPelicula.get(i).getCategoria(), 
+                        apm.listaPelicula.get(i).getIdiomas(),apm.listaPelicula.get(i).getSubtitulos(),apm.listaPelicula.get(i).getComentarios(),apm.listaPelicula.get(i).getActores(), apm.listaPelicula.get(i).getProductora(),
+                        apm.listaPelicula.get(i).getDirector(), apm.listaPelicula.get(i).getDuracion(),apm.listaPelicula.get(i).getRating()));
+            }
             series1.setModel(modelo);
+            peliculas1.setModel(modelo2);
             app.setModal(true);
             app.pack();
             app.setLocationRelativeTo(this);
