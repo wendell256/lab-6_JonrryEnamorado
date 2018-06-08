@@ -52,6 +52,9 @@ public class pelicula {
     
     public pelicula() {
     }
+    public pelicula(String name) {
+        this.nombre = name;
+    }
 
     public int getId() {
         return id;

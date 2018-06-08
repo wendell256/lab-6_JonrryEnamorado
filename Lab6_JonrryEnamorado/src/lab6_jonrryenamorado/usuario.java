@@ -15,14 +15,26 @@ public class usuario {
     String correo;
     String contra;
     String fecha;
-    ArrayList<mys> pref= new ArrayList();
+    ArrayList<serie> serie= new ArrayList();
+    ArrayList<pelicula> movies= new ArrayList();
     int x;
     String user;
     
     public usuario() {
     }
 
-    public usuario(String correo, String contra, String fecha, int x, String user) {
+    public usuario(String correo, String contra, String fecha, ArrayList<serie> serie, ArrayList<pelicula> movies, int x, String user) {
+        this.correo = correo;
+        this.contra = contra;
+        this.fecha = fecha;
+        this.serie = serie;
+        this.movies = movies;
+        this.x = x;
+        this.user = user;
+    }
+
+        
+    public usuario(String user,String contra,String correo, String fecha, int x) {
         this.correo = correo;
         this.contra = contra;
         this.fecha = fecha;
@@ -64,13 +76,23 @@ public class usuario {
         this.fecha = fecha;
     }
 
-    public ArrayList<mys> getPref() {
-        return pref;
+    public ArrayList<serie> getSerie() {
+        return serie;
     }
 
-    public void setPref(ArrayList<mys> pref) {
-        this.pref = pref;
+    public void setSerie(ArrayList<serie> serie) {
+        this.serie = serie;
     }
+
+    public ArrayList<pelicula> getMovies() {
+        return movies;
+    }
+
+    public void setMovies(ArrayList<pelicula> movies) {
+        this.movies = movies;
+    }
+
+   
 
     public int getX() {
         return x;

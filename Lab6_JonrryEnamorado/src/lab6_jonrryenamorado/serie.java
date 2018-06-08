@@ -27,6 +27,9 @@ public class serie{
 
     public serie() {
     }
+    public serie(String name) {
+        this.nombre = name;
+    }
 
     public serie(int id, String nombre, String categoria, String productora, String director, String duracion, int rating, int temp) {
         this.temp = temp;
