@@ -30,7 +30,7 @@ public class administrarseries {
         
         archivo = new File(path);
         if(archivo.exists()){
-            System.out.println("true");
+            
         }
     }
 

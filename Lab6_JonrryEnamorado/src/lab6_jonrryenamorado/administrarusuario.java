@@ -108,7 +108,7 @@ public class administrarusuario {
                 while (token.hasMoreTokens()) {
                    
                     StringTokenizer token2 = new StringTokenizer(token.nextToken() , ";");
-                    int card;
+                    String card;
                     String usuario, correo, fecha, contra;
                     usuario = token2.nextToken();
                     contra = token2.nextToken();
@@ -131,7 +131,7 @@ public class administrarusuario {
                        movies.add(new pelicula(token4.nextToken()));
                     }
                     
-                    card = Integer.parseInt(token2.nextToken());
+                    card = token2.nextToken();
                     listausuario.add(new usuario(usuario,contra,correo,fecha,card));
                     listausuario.get(listausuario.size() - 1).setMovies(movies);
                     listausuario.get(listausuario.size() - 1).setSerie(series);

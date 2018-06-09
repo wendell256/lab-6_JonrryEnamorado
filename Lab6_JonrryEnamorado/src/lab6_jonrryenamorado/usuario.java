@@ -17,13 +17,13 @@ public class usuario {
     String fecha;
     ArrayList<serie> serie= new ArrayList();
     ArrayList<pelicula> movies= new ArrayList();
-    int x;
+    String x;
     String user;
     
     public usuario() {
     }
 
-    public usuario(String correo, String contra, String fecha, ArrayList<serie> serie, ArrayList<pelicula> movies, int x, String user) {
+    public usuario(String user,String contra,String correo, String fecha, ArrayList<serie> serie, ArrayList<pelicula> movies, String x) {
         this.correo = correo;
         this.contra = contra;
         this.fecha = fecha;
@@ -34,7 +34,7 @@ public class usuario {
     }
 
         
-    public usuario(String user,String contra,String correo, String fecha, int x) {
+    public usuario(String user,String contra,String correo, String fecha, String x) {
         this.correo = correo;
         this.contra = contra;
         this.fecha = fecha;
@@ -94,11 +94,11 @@ public class usuario {
 
    
 
-    public int getX() {
+    public String getX() {
         return x;
     }
 
-    public void setX(int x) {
+    public void setX(String x) {
         this.x = x;
     }
 

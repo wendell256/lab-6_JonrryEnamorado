@@ -6,9 +6,11 @@
 package lab6_jonrryenamorado;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -46,6 +48,7 @@ public class principal extends javax.swing.JFrame {
         series1 = new javax.swing.JList<>();
         jScrollPane6 = new javax.swing.JScrollPane();
         peliculas1 = new javax.swing.JList<>();
+        jLabel11 = new javax.swing.JLabel();
         register = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -67,6 +70,10 @@ public class principal extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
 
+        app.setDefaultCloseOperation(HIDE_ON_CLOSE
+
+        );
+
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Preferidas");
         tree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jScrollPane4.setViewportView(tree1);
@@ -79,21 +86,27 @@ public class principal extends javax.swing.JFrame {
         peliculas1.setModel(new DefaultListModel());
         jScrollPane6.setViewportView(peliculas1);
 
+        jLabel11.setText("jLabel11");
+
         javax.swing.GroupLayout appLayout = new javax.swing.GroupLayout(app.getContentPane());
         app.getContentPane().setLayout(appLayout);
         appLayout.setHorizontalGroup(
             appLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(appLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
             .addGroup(appLayout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(appLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(appLayout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(appLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel11)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         appLayout.setVerticalGroup(
@@ -101,13 +114,14 @@ public class principal extends javax.swing.JFrame {
             .addGroup(appLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83)
-                .addGroup(appLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(appLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel11)
+                .addGap(63, 63, 63)
+                .addGroup(appLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                    .addComponent(jScrollPane6))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         jLabel1.setText("Registrar");
@@ -264,29 +278,38 @@ public class principal extends javax.swing.JFrame {
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
+        administrarseries ap = new administrarseries("./series.txt");
+        administrarpeliculas apm = new administrarpeliculas("./peliculas.txt");
+        administrarusuario user = new administrarusuario("./usuarios.txt");
+        boolean ver = false;
+        try {
+            ap.cargarArchivo();
+        } catch (IOException ex) {
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            apm.cargarArchivo();
+        } catch (IOException ex) {
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            user.cargarArchivo();
+        } catch (IOException ex) {
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         if (tf_user.getText().equals(admin) && pf_pass.getText().equals(pass)) {
-
+            series1.setEnabled(false);
+            peliculas1.setEnabled(false);
+            tree1.setEnabled(false);
             DefaultListModel modelo = (DefaultListModel) series1.getModel();
             DefaultListModel modelo2 = (DefaultListModel) peliculas1.getModel();
-
-            administrarseries ap = new administrarseries("./series.txt");
-            administrarpeliculas apm = new administrarpeliculas("./peliculas.txt");
-            try {
-                ap.cargarArchivo();
-            } catch (IOException ex) {
-                Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
-            }
 
             for (int i = 0; i < ap.listaSerie.size(); i++) {
                 modelo.addElement(new serie(ap.listaSerie.get(i).getId(), ap.listaSerie.get(i).getNombre(), ap.listaSerie.get(i).getCategoria(),
                         ap.listaSerie.get(i).getIdiomas(), ap.listaSerie.get(i).getSubtitulos(), ap.listaSerie.get(i).getComentarios(), ap.listaSerie.get(i).getActores(), ap.listaSerie.get(i).getProductora(),
                         ap.listaSerie.get(i).getDirector(), ap.listaSerie.get(i).getDuracion(), ap.listaSerie.get(i).getRating(), ap.listaSerie.get(i).getTemp()));
             }
-            try {
-                apm.cargarArchivo();
-            } catch (IOException ex) {
-                Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
-            }
+
             for (int i = 0; i < apm.listaPelicula.size(); i++) {
                 modelo2.addElement(new pelicula(apm.listaPelicula.get(i).getId(), apm.listaPelicula.get(i).getNombre(), apm.listaPelicula.get(i).getCategoria(),
                         apm.listaPelicula.get(i).getIdiomas(), apm.listaPelicula.get(i).getSubtitulos(), apm.listaPelicula.get(i).getComentarios(), apm.listaPelicula.get(i).getActores(), apm.listaPelicula.get(i).getProductora(),
@@ -294,12 +317,46 @@ public class principal extends javax.swing.JFrame {
             }
             series1.setModel(modelo);
             peliculas1.setModel(modelo2);
+
             app.setModal(true);
             app.pack();
             app.setLocationRelativeTo(this);
             app.setVisible(true);
 
+        } else {
+            for (usuario t : user.getListausuario()) {
+                if (t.getUser().equals(tf_user.getText()) && t.getContra().equals(pf_pass.getText())) {
+                    ver = true;
+                }
+            }
+                if (ver) {
+                    DefaultListModel modelo = (DefaultListModel) series1.getModel();
+                    DefaultListModel modelo2 = (DefaultListModel) peliculas1.getModel();
+
+                    for (int i = 0; i < ap.listaSerie.size(); i++) {
+                        modelo.addElement(new serie(ap.listaSerie.get(i).getId(), ap.listaSerie.get(i).getNombre(), ap.listaSerie.get(i).getCategoria(),
+                                ap.listaSerie.get(i).getIdiomas(), ap.listaSerie.get(i).getSubtitulos(), ap.listaSerie.get(i).getComentarios(), ap.listaSerie.get(i).getActores(), ap.listaSerie.get(i).getProductora(),
+                                ap.listaSerie.get(i).getDirector(), ap.listaSerie.get(i).getDuracion(), ap.listaSerie.get(i).getRating(), ap.listaSerie.get(i).getTemp()));
+                    }
+
+                    for (int i = 0; i < apm.listaPelicula.size(); i++) {
+                        modelo2.addElement(new pelicula(apm.listaPelicula.get(i).getId(), apm.listaPelicula.get(i).getNombre(), apm.listaPelicula.get(i).getCategoria(),
+                                apm.listaPelicula.get(i).getIdiomas(), apm.listaPelicula.get(i).getSubtitulos(), apm.listaPelicula.get(i).getComentarios(), apm.listaPelicula.get(i).getActores(), apm.listaPelicula.get(i).getProductora(),
+                                apm.listaPelicula.get(i).getDirector(), apm.listaPelicula.get(i).getDuracion(), apm.listaPelicula.get(i).getRating()));
+                    }
+                    series1.setModel(modelo);
+                    peliculas1.setModel(modelo2);
+
+                    app.setModal(true);
+                    app.pack();
+                    app.setLocationRelativeTo(this);
+                    app.setVisible(true);
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrecta");
+                }
         }
+
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
@@ -313,18 +370,35 @@ public class principal extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         administrarusuario adu = new administrarusuario("./usuarios.txt");
-        usuario m = new usuario(user.getText(),pass2.getText(),correo.getText(),fecha.getText(),Integer.parseInt(tarjeta.getText()));
+        ArrayList<serie> k = new ArrayList();
+        ArrayList<pelicula> l = new ArrayList();
+        k.add(new serie("n/a"));
+        l.add(new pelicula("n/a"));
+        usuario m = new usuario(user.getText(), pass2.getText(), correo.getText(), fecha.getText(), k, l, tarjeta.getText());
         try {
             adu.cargarArchivo();
         } catch (IOException ex) {
             Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        adu.setUsuario(m);
-        try {
-            adu.escribirArchivo();
-        } catch (IOException ex) {
-            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        boolean ver = true;
+        for (usuario t : adu.getListausuario()) {
+            if (t.getUser().equals(m.getUser()) || t.getCorreo().equals(m.getCorreo()) || t.getUser().equals("admin")) {
+                ver = false;
+            }
         }
+        if (ver) {
+            adu.setUsuario(m);
+            try {
+                adu.escribirArchivo();
+                JOptionPane.showMessageDialog(register, "Usuario creado exitosamente!");
+            } catch (IOException ex) {
+                Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(register, "ERROR USUARIO O CORREO YA EXISTENTE");
+        }
+
     }//GEN-LAST:event_jButton1MouseClicked
 
     /**
@@ -371,6 +445,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
