@@ -7,6 +7,7 @@ package lab6_jonrryenamorado;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -48,7 +49,9 @@ public class principal extends javax.swing.JFrame {
         series1 = new javax.swing.JList<>();
         jScrollPane6 = new javax.swing.JScrollPane();
         peliculas1 = new javax.swing.JList<>();
-        jLabel11 = new javax.swing.JLabel();
+        bt_admin = new javax.swing.JButton();
+        bt_cuenta = new javax.swing.JButton();
+        pref = new javax.swing.JButton();
         register = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -62,6 +65,37 @@ public class principal extends javax.swing.JFrame {
         tarjeta = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         pass2 = new javax.swing.JPasswordField();
+        jd_admin = new javax.swing.JDialog();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        a_id = new javax.swing.JTextField();
+        anm = new javax.swing.JTextField();
+        act = new javax.swing.JTextField();
+        aid = new javax.swing.JTextField();
+        asub = new javax.swing.JTextField();
+        acom = new javax.swing.JTextField();
+        aact = new javax.swing.JTextField();
+        aprod = new javax.swing.JTextField();
+        adir = new javax.swing.JTextField();
+        adur = new javax.swing.JTextField();
+        arat = new javax.swing.JComboBox<>();
+        jButton2 = new javax.swing.JButton();
+        jLabel22 = new javax.swing.JLabel();
+        ntemp = new javax.swing.JTextField();
+        pos = new javax.swing.JComboBox<>();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         tf_user = new javax.swing.JTextField();
@@ -86,42 +120,60 @@ public class principal extends javax.swing.JFrame {
         peliculas1.setModel(new DefaultListModel());
         jScrollPane6.setViewportView(peliculas1);
 
-        jLabel11.setText("jLabel11");
+        bt_admin.setText("Agregar Movie");
+        bt_admin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_adminMouseClicked(evt);
+            }
+        });
+
+        bt_cuenta.setText("Cuenta");
+
+        pref.setText("Agregar a Pref");
 
         javax.swing.GroupLayout appLayout = new javax.swing.GroupLayout(app.getContentPane());
         app.getContentPane().setLayout(appLayout);
         appLayout.setHorizontalGroup(
             appLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(appLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
-            .addGroup(appLayout.createSequentialGroup()
                 .addGroup(appLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(appLayout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(appLayout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel11)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(88, 88, 88)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(appLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(appLayout.createSequentialGroup()
+                        .addComponent(pref)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                    .addGroup(appLayout.createSequentialGroup()
+                        .addGroup(appLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(bt_cuenta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bt_admin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         appLayout.setVerticalGroup(
             appLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(appLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(appLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_admin))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel11)
-                .addGap(63, 63, 63)
+                .addComponent(bt_cuenta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pref)
+                .addGap(24, 24, 24)
                 .addGroup(appLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
                     .addComponent(jScrollPane6))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         jLabel1.setText("Registrar");
@@ -202,6 +254,180 @@ public class principal extends javax.swing.JFrame {
                 .addGap(30, 30, 30))
         );
 
+        jLabel11.setText("Id");
+
+        jLabel12.setText("Nombre:");
+
+        jLabel13.setText("Categoria");
+
+        jLabel14.setText("Idiomas");
+
+        jLabel15.setText("Subtitulos");
+
+        jLabel16.setText("Comments");
+
+        jLabel17.setText("Actores");
+
+        jLabel18.setText("Prod.");
+
+        jLabel19.setText("Director");
+
+        jLabel20.setText("Duracion");
+
+        jLabel21.setText("Rating");
+
+        anm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anmActionPerformed(evt);
+            }
+        });
+
+        arat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+
+        jButton2.setText("Agregar");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+
+        jLabel22.setText("N. Temp:");
+
+        ntemp.setEnabled(false);
+
+        pos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pelicula", "Serie", " " }));
+        pos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                posActionPerformed(evt);
+            }
+        });
+
+        jLabel23.setText("Separar con comas(\",\")");
+
+        jLabel24.setText("Separar con comas(\",\")");
+
+        jLabel25.setText("Separar con comas(\",\")");
+
+        jLabel26.setText("Separar con comas(\",\")");
+
+        javax.swing.GroupLayout jd_adminLayout = new javax.swing.GroupLayout(jd_admin.getContentPane());
+        jd_admin.getContentPane().setLayout(jd_adminLayout);
+        jd_adminLayout.setHorizontalGroup(
+            jd_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_adminLayout.createSequentialGroup()
+                .addGroup(jd_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_adminLayout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addGroup(jd_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel20)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel19)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel17)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel22))
+                        .addGap(18, 18, 18)
+                        .addGroup(jd_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(adur)
+                            .addComponent(adir)
+                            .addComponent(aprod)
+                            .addComponent(aact)
+                            .addComponent(acom)
+                            .addComponent(asub)
+                            .addComponent(aid)
+                            .addComponent(act)
+                            .addComponent(anm)
+                            .addComponent(a_id)
+                            .addGroup(jd_adminLayout.createSequentialGroup()
+                                .addGroup(jd_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(arat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ntemp, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jd_adminLayout.createSequentialGroup()
+                        .addGap(174, 174, 174)
+                        .addComponent(jButton2)
+                        .addGap(0, 163, Short.MAX_VALUE)))
+                .addGap(31, 31, 31)
+                .addGroup(jd_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel23)
+                    .addComponent(jLabel24)
+                    .addComponent(jLabel26)
+                    .addComponent(jLabel25))
+                .addGap(23, 23, 23))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_adminLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(pos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(179, 179, 179))
+        );
+        jd_adminLayout.setVerticalGroup(
+            jd_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_adminLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(jd_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel11)
+                    .addComponent(a_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(anm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(act, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_adminLayout.createSequentialGroup()
+                        .addGroup(jd_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(aid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jd_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel15)
+                            .addComponent(asub, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel24))
+                        .addGap(18, 18, 18)
+                        .addGroup(jd_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel16)
+                            .addComponent(acom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel23)))
+                    .addComponent(jLabel26))
+                .addGap(18, 18, 18)
+                .addGroup(jd_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(aact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25))
+                .addGap(18, 18, 18)
+                .addGroup(jd_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(aprod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(adir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(jd_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(adur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(arat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(ntemp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addContainerGap())
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel6.setText("Password:");
@@ -251,7 +477,7 @@ public class principal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(158, 158, 158)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,6 +527,9 @@ public class principal extends javax.swing.JFrame {
             series1.setEnabled(false);
             peliculas1.setEnabled(false);
             tree1.setEnabled(false);
+            bt_admin.setEnabled(true);
+            pref.setEnabled(false);
+            bt_cuenta.setEnabled(false);
             DefaultListModel modelo = (DefaultListModel) series1.getModel();
             DefaultListModel modelo2 = (DefaultListModel) peliculas1.getModel();
 
@@ -329,32 +558,37 @@ public class principal extends javax.swing.JFrame {
                     ver = true;
                 }
             }
-                if (ver) {
-                    DefaultListModel modelo = (DefaultListModel) series1.getModel();
-                    DefaultListModel modelo2 = (DefaultListModel) peliculas1.getModel();
+            if (ver) {
+                DefaultListModel modelo = (DefaultListModel) series1.getModel();
+                DefaultListModel modelo2 = (DefaultListModel) peliculas1.getModel();
+                bt_admin.setEnabled(false);
+                pref.setEnabled(true);
 
-                    for (int i = 0; i < ap.listaSerie.size(); i++) {
-                        modelo.addElement(new serie(ap.listaSerie.get(i).getId(), ap.listaSerie.get(i).getNombre(), ap.listaSerie.get(i).getCategoria(),
-                                ap.listaSerie.get(i).getIdiomas(), ap.listaSerie.get(i).getSubtitulos(), ap.listaSerie.get(i).getComentarios(), ap.listaSerie.get(i).getActores(), ap.listaSerie.get(i).getProductora(),
-                                ap.listaSerie.get(i).getDirector(), ap.listaSerie.get(i).getDuracion(), ap.listaSerie.get(i).getRating(), ap.listaSerie.get(i).getTemp()));
-                    }
-
-                    for (int i = 0; i < apm.listaPelicula.size(); i++) {
-                        modelo2.addElement(new pelicula(apm.listaPelicula.get(i).getId(), apm.listaPelicula.get(i).getNombre(), apm.listaPelicula.get(i).getCategoria(),
-                                apm.listaPelicula.get(i).getIdiomas(), apm.listaPelicula.get(i).getSubtitulos(), apm.listaPelicula.get(i).getComentarios(), apm.listaPelicula.get(i).getActores(), apm.listaPelicula.get(i).getProductora(),
-                                apm.listaPelicula.get(i).getDirector(), apm.listaPelicula.get(i).getDuracion(), apm.listaPelicula.get(i).getRating()));
-                    }
-                    series1.setModel(modelo);
-                    peliculas1.setModel(modelo2);
-
-                    app.setModal(true);
-                    app.pack();
-                    app.setLocationRelativeTo(this);
-                    app.setVisible(true);
-
-                } else {
-                    JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrecta");
+                bt_cuenta.setEnabled(true);
+                for (int i = 0; i < ap.listaSerie.size(); i++) {
+                    modelo.addElement(new serie(ap.listaSerie.get(i).getId(), ap.listaSerie.get(i).getNombre(), ap.listaSerie.get(i).getCategoria(),
+                            ap.listaSerie.get(i).getIdiomas(), ap.listaSerie.get(i).getSubtitulos(), ap.listaSerie.get(i).getComentarios(), ap.listaSerie.get(i).getActores(), ap.listaSerie.get(i).getProductora(),
+                            ap.listaSerie.get(i).getDirector(), ap.listaSerie.get(i).getDuracion(), ap.listaSerie.get(i).getRating(), ap.listaSerie.get(i).getTemp()));
                 }
+
+                for (int i = 0; i < apm.listaPelicula.size(); i++) {
+                    modelo2.addElement(new pelicula(apm.listaPelicula.get(i).getId(), apm.listaPelicula.get(i).getNombre(), apm.listaPelicula.get(i).getCategoria(),
+                            apm.listaPelicula.get(i).getIdiomas(), apm.listaPelicula.get(i).getSubtitulos(), apm.listaPelicula.get(i).getComentarios(), apm.listaPelicula.get(i).getActores(), apm.listaPelicula.get(i).getProductora(),
+                            apm.listaPelicula.get(i).getDirector(), apm.listaPelicula.get(i).getDuracion(), apm.listaPelicula.get(i).getRating()));
+                }
+                series1.setModel(modelo);
+                peliculas1.setModel(modelo2);
+                series1.setEnabled(true);
+                peliculas1.setEnabled(true);
+                tree1.setEnabled(true);
+                app.setModal(true);
+                app.pack();
+                app.setLocationRelativeTo(this);
+                app.setVisible(true);
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrecta");
+            }
         }
 
     }//GEN-LAST:event_jButton3MouseClicked
@@ -401,6 +635,112 @@ public class principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton1MouseClicked
 
+    private void anmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anmActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_anmActionPerformed
+
+    private void posActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posActionPerformed
+        // TODO add your handling code here:
+
+        if (pos.getSelectedItem().toString().equals("Serie")) {
+            ntemp.setEnabled(true);
+        } else {
+            ntemp.setEnabled(false);
+        }
+    }//GEN-LAST:event_posActionPerformed
+
+    private void bt_adminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_adminMouseClicked
+        // TODO add your handling code here:
+        jd_admin.setModal(true);
+        jd_admin.pack();
+        jd_admin.setLocationRelativeTo(this);
+        jd_admin.setVisible(true);
+    }//GEN-LAST:event_bt_adminMouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        administrarseries ds = new administrarseries("./series.txt");
+        administrarpeliculas dp = new administrarpeliculas("./peliculas.txt");
+        if (pos.getSelectedItem().toString().equals("Serie")) {
+            try {
+                ds.cargarArchivo();
+            } catch (IOException ex) {
+                Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            for (serie t : ds.getListaSerie()) {
+                if (t.getId() == (Integer.parseInt(a_id.getText()))) {
+                    a_id.setText(JOptionPane.showInputDialog("ID YA EXISTE INGRESE OTRO"));
+                }
+            }
+            try {
+                ArrayList<idioma> idiomas = new ArrayList();
+                ArrayList<sub> subs = new ArrayList();
+                ArrayList<comments> coments = new ArrayList();
+                ArrayList<actores> actores = new ArrayList();
+                String s_idiomas = aid.getText();
+                String s_subs = asub.getText();
+                String s_coments = acom.getText();
+                String s_act = aact.getText();
+
+                Scanner id = new Scanner(s_idiomas);
+                id.useDelimiter(",");
+                while (id.hasNext()) {
+                    idiomas.add(new idioma(id.next()));
+                }
+                id = new Scanner(s_subs);
+                id.useDelimiter(",");
+                while (id.hasNext()) {
+                    subs.add(new sub(id.next()));
+                }
+                id = new Scanner(s_coments);
+                id.useDelimiter(",");
+                while (id.hasNext()) {
+                    coments.add(new comments(id.next()));
+                }
+                id = new Scanner(s_act);
+                id.useDelimiter(",");
+                while (id.hasNext()) {
+                    actores.add(new actores(id.next()));
+                }
+                serie p = new serie(Integer.parseInt(a_id.getText()), anm.getText(), act.getText(), idiomas, subs, coments, actores, aprod.getText(), adir.getText(),
+                         adur.getText(), Integer.parseInt(arat.getSelectedItem().toString()), Integer.parseInt(ntemp.getText()));
+
+                ds.setSerie(p);
+                ds.escribirArchivo();
+                JOptionPane.showMessageDialog(jd_admin, "Serie agregada con exito");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(jd_admin, "ERROR NO SE PUDO AGREGAR VERIFIQUE LOS DATOS");
+            }
+
+        } else {
+            try {
+                dp.cargarArchivo();
+            } catch (IOException ex) {
+                Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            for (pelicula t : dp.getListaPelicula()) {
+
+                if (t.getId() == (Integer.parseInt(a_id.getText()))) {
+                    a_id.setText(JOptionPane.showInputDialog("ID YA EXISTE INGRESE OTRO"));
+                }
+            }
+
+            try {
+                ArrayList<idioma> idiomas = new ArrayList();
+                ArrayList<sub> subs = new ArrayList();
+                ArrayList<comments> coments = new ArrayList();
+                ArrayList<actores> actores = new ArrayList();
+                pelicula e = new pelicula(Integer.parseInt(a_id.getText()), anm.getText(), act.getText(), idiomas, subs, coments, actores, aprod.getText(), adir.getText(),
+                         adur.getText(), Integer.parseInt(arat.getSelectedItem().toString()));
+                dp.setPelicula(e);
+                dp.escribirArchivo();
+                JOptionPane.showMessageDialog(jd_admin, "Pelicula agregada con exito");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(jd_admin, "ERROR NO SE PUDO AGREGAR VERIFIQUE LOS DATOS");
+            }
+        }
+    }//GEN-LAST:event_jButton2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -437,16 +777,45 @@ public class principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField a_id;
+    private javax.swing.JTextField aact;
+    private javax.swing.JTextField acom;
+    private javax.swing.JTextField act;
+    private javax.swing.JTextField adir;
+    private javax.swing.JTextField adur;
+    private javax.swing.JTextField aid;
+    private javax.swing.JTextField anm;
     private javax.swing.JDialog app;
+    private javax.swing.JTextField aprod;
+    private javax.swing.JComboBox<String> arat;
+    private javax.swing.JTextField asub;
+    private javax.swing.JButton bt_admin;
+    private javax.swing.JButton bt_cuenta;
     private javax.swing.JTextField correo;
     private javax.swing.JTextField fecha;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -457,9 +826,13 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JDialog jd_admin;
+    private javax.swing.JTextField ntemp;
     private javax.swing.JPasswordField pass2;
     private javax.swing.JList<String> peliculas1;
     private javax.swing.JPasswordField pf_pass;
+    private javax.swing.JComboBox<String> pos;
+    private javax.swing.JButton pref;
     private javax.swing.JDialog register;
     private javax.swing.JList<String> series1;
     private javax.swing.JTextField tarjeta;

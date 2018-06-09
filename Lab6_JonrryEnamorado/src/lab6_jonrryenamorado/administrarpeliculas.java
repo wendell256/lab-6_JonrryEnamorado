@@ -6,9 +6,11 @@
 package lab6_jonrryenamorado;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -56,7 +58,47 @@ public class administrarpeliculas {
         this.listaPelicula.add(p);
 
     }
-    
+    public void escribirArchivo() throws IOException {
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+        try {
+            fw = new FileWriter(archivo, false);
+            bw = new BufferedWriter(fw);
+            for (pelicula t : listaPelicula) {
+                bw.write(t.getId() + ";");
+                bw.write(t.getNombre() + ";");
+                bw.write(t.getCategoria() + ";");
+                for (idioma i : t.getIdiomas()) {
+                    bw.write(i.getIdioma() + ",");
+                }
+                bw.write(";");
+                for (sub i : t.getSubtitulos()) {
+                    bw.write(i.getSub() + ",");
+                }
+                bw.write(";");
+                for (comments i : t.getComentarios()) {
+                    bw.write(i.getComentario() + ",");
+                }
+                bw.write(";");
+                for (actores i : t.getActores()) {
+                    bw.write(i.getActores() + ",");
+                }
+
+                bw.write(";");
+                bw.write(t.getProductora() + ";");
+                bw.write(t.getDirector() + ";");
+                bw.write(t.getDuracion() + ";");
+                bw.write(t.getRating() + ";"+"-");
+               
+
+            }
+            bw.flush();
+        } catch (Exception e) {
+        }
+        bw.close();
+        fw.close();
+
+    }
      public void cargarArchivo() throws FileNotFoundException, IOException {
         
         Scanner sc = null;

@@ -73,15 +73,19 @@ public class administrarseries {
                 for (idioma i : t.getIdiomas()) {
                     bw.write(i.getIdioma() + ",");
                 }
+                bw.write(";");
                 for (sub i : t.getSubtitulos()) {
                     bw.write(i.getSub() + ",");
                 }
+                bw.write(";");
                 for (comments i : t.getComentarios()) {
                     bw.write(i.getComentario() + ",");
                 }
+                bw.write(";");
                 for (actores i : t.getActores()) {
                     bw.write(i.getActores() + ",");
                 }
+                
 
                 bw.write(";");
                 bw.write(t.getProductora() + ";");
