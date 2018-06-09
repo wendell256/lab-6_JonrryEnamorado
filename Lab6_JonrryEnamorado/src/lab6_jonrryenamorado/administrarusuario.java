@@ -62,17 +62,25 @@ public class administrarusuario {
             bw = new BufferedWriter(fw);
             for (usuario t : listausuario) {
                 bw.write(t.getUser()+";");
+                bw.write(t.getContra()+";");
+                
                 bw.write(t.getCorreo()+";");
                 bw.write(t.getFecha()+";");
-                bw.write(t.getX()+";");
                 for (serie h : t.getSerie()) {
+                    if(!h.getNombre().equals("n/a")){
                     bw.write(h.getNombre()+",");
+                        
+                    }
+                    else{
+                        bw.write("n/a");
+                    }
                 }
                 bw.write(";");
                 for (pelicula p : t.getMovies()) {
                     bw.write(p.getNombre() + ",");
                 }
                 bw.write(";");
+                bw.write(t.getX()+";");
                 bw.write("_");
             }
             bw.flush();
@@ -88,11 +96,11 @@ public class administrarusuario {
         listausuario = new ArrayList();
        
        
+       
+        if (archivo.exists()) {
         FileReader r = new FileReader(archivo);
         BufferedReader buff= new BufferedReader(r);
         StringTokenizer token = new StringTokenizer(buff.readLine() , "_");
-       
-        if (archivo.exists()) {
             try {
                 
                 
