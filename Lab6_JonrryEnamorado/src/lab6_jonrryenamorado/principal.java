@@ -52,6 +52,10 @@ public class principal extends javax.swing.JFrame {
         bt_admin = new javax.swing.JButton();
         bt_cuenta = new javax.swing.JButton();
         pref = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
         register = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -96,6 +100,18 @@ public class principal extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
+        modserie = new javax.swing.JDialog();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
+        modpeli = new javax.swing.JDialog();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jButton10 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         tf_user = new javax.swing.JTextField();
@@ -131,6 +147,34 @@ public class principal extends javax.swing.JFrame {
 
         pref.setText("Agregar a Pref");
 
+        jButton5.setText("Modificar");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+
+        jButton6.setText("Eliminar");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+
+        jButton8.setText("Modificar");
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton8MouseClicked(evt);
+            }
+        });
+
+        jButton9.setText("Eliminar");
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton9MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout appLayout = new javax.swing.GroupLayout(app.getContentPane());
         app.getContentPane().setLayout(appLayout);
         appLayout.setHorizontalGroup(
@@ -138,13 +182,26 @@ public class principal extends javax.swing.JFrame {
             .addGroup(appLayout.createSequentialGroup()
                 .addGroup(appLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(appLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(appLayout.createSequentialGroup()
                         .addGap(88, 88, 88)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(appLayout.createSequentialGroup()
+                        .addGroup(appLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(appLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(appLayout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addGroup(appLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton8))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(appLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(appLayout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addGroup(appLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(appLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(appLayout.createSequentialGroup()
@@ -173,7 +230,14 @@ public class principal extends javax.swing.JFrame {
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
                     .addComponent(jScrollPane6))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(appLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton5)
+                    .addComponent(jButton8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(appLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton6)
+                    .addComponent(jButton9)))
         );
 
         jLabel1.setText("Registrar");
@@ -428,6 +492,108 @@ public class principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID:", "Nombre:", "Categoria:", "Idiomas:", "Subtitulos:", "Comentarios:", "Actores:", "Productora:", "Director:", "Duracion:", "Rating:", "Temporadas:" }));
+
+        jLabel27.setText("Dato a Editar:");
+
+        jLabel28.setText("Nuevo Dato:");
+
+        jButton7.setText("Set");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout modserieLayout = new javax.swing.GroupLayout(modserie.getContentPane());
+        modserie.getContentPane().setLayout(modserieLayout);
+        modserieLayout.setHorizontalGroup(
+            modserieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(modserieLayout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addGroup(modserieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel27))
+                .addGap(18, 18, 18)
+                .addGroup(modserieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(modserieLayout.createSequentialGroup()
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(85, Short.MAX_VALUE))
+                    .addGroup(modserieLayout.createSequentialGroup()
+                        .addComponent(jLabel28)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(modserieLayout.createSequentialGroup()
+                .addGap(217, 217, 217)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        modserieLayout.setVerticalGroup(
+            modserieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(modserieLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(modserieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel27)
+                    .addComponent(jLabel28))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(modserieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID:", "Nombre:", "Categoria:", "Idiomas:", "Subtitulos:", "Comentarios:", "Actores:", "Productora:", "Director:", "Duracion:", "Rating:", "Temporadas:" }));
+
+        jLabel29.setText("Dato a Editar:");
+
+        jLabel30.setText("Nuevo Dato:");
+
+        jButton10.setText("Set");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout modpeliLayout = new javax.swing.GroupLayout(modpeli.getContentPane());
+        modpeli.getContentPane().setLayout(modpeliLayout);
+        modpeliLayout.setHorizontalGroup(
+            modpeliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(modpeliLayout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addGroup(modpeliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel29))
+                .addGap(18, 18, 18)
+                .addGroup(modpeliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(modpeliLayout.createSequentialGroup()
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(63, Short.MAX_VALUE))
+                    .addGroup(modpeliLayout.createSequentialGroup()
+                        .addComponent(jLabel30)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(modpeliLayout.createSequentialGroup()
+                .addGap(217, 217, 217)
+                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        modpeliLayout.setVerticalGroup(
+            modpeliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(modpeliLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(modpeliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel29)
+                    .addComponent(jLabel30))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(modpeliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton10)
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel6.setText("Password:");
@@ -524,9 +690,13 @@ public class principal extends javax.swing.JFrame {
             Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
         }
         if (tf_user.getText().equals(admin) && pf_pass.getText().equals(pass)) {
-            series1.setEnabled(false);
-            peliculas1.setEnabled(false);
+            series1.setEnabled(true);
+            peliculas1.setEnabled(true);
             tree1.setEnabled(false);
+            jButton6.setEnabled(true);
+            jButton5.setEnabled(true);
+            jButton8.setEnabled(true);
+            jButton9.setEnabled(true);
             bt_admin.setEnabled(true);
             pref.setEnabled(false);
             bt_cuenta.setEnabled(false);
@@ -578,6 +748,10 @@ public class principal extends javax.swing.JFrame {
                 }
                 series1.setModel(modelo);
                 peliculas1.setModel(modelo2);
+                jButton6.setEnabled(false);
+                jButton5.setEnabled(false);
+                jButton8.setEnabled(false);
+                jButton9.setEnabled(false);
                 series1.setEnabled(true);
                 peliculas1.setEnabled(true);
                 tree1.setEnabled(true);
@@ -668,7 +842,7 @@ public class principal extends javax.swing.JFrame {
                 Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
             }
             for (serie t : ds.getListaSerie()) {
-                if (t.getId() == (Integer.parseInt(a_id.getText()))) {
+                if (t.getId() == (a_id.getText())) {
                     a_id.setText(JOptionPane.showInputDialog("ID YA EXISTE INGRESE OTRO"));
                 }
             }
@@ -702,8 +876,8 @@ public class principal extends javax.swing.JFrame {
                 while (id.hasNext()) {
                     actores.add(new actores(id.next()));
                 }
-                serie p = new serie(Integer.parseInt(a_id.getText()), anm.getText(), act.getText(), idiomas, subs, coments, actores, aprod.getText(), adir.getText(),
-                         adur.getText(), Integer.parseInt(arat.getSelectedItem().toString()), Integer.parseInt(ntemp.getText()));
+                serie p = new serie(a_id.getText(), anm.getText(), act.getText(), idiomas, subs, coments, actores, aprod.getText(), adir.getText(),
+                        adur.getText(), Integer.parseInt(arat.getSelectedItem().toString()), Integer.parseInt(ntemp.getText()));
 
                 ds.setSerie(p);
                 ds.escribirArchivo();
@@ -720,7 +894,7 @@ public class principal extends javax.swing.JFrame {
             }
             for (pelicula t : dp.getListaPelicula()) {
 
-                if (t.getId() == (Integer.parseInt(a_id.getText()))) {
+                if (t.getId().equals(a_id.getText())) {
                     a_id.setText(JOptionPane.showInputDialog("ID YA EXISTE INGRESE OTRO"));
                 }
             }
@@ -730,8 +904,8 @@ public class principal extends javax.swing.JFrame {
                 ArrayList<sub> subs = new ArrayList();
                 ArrayList<comments> coments = new ArrayList();
                 ArrayList<actores> actores = new ArrayList();
-                pelicula e = new pelicula(Integer.parseInt(a_id.getText()), anm.getText(), act.getText(), idiomas, subs, coments, actores, aprod.getText(), adir.getText(),
-                         adur.getText(), Integer.parseInt(arat.getSelectedItem().toString()));
+                pelicula e = new pelicula(a_id.getText(), anm.getText(), act.getText(), idiomas, subs, coments, actores, aprod.getText(), adir.getText(),
+                        adur.getText(), Integer.parseInt(arat.getSelectedItem().toString()));
                 dp.setPelicula(e);
                 dp.escribirArchivo();
                 JOptionPane.showMessageDialog(jd_admin, "Pelicula agregada con exito");
@@ -740,6 +914,102 @@ public class principal extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        // TODO add your handling code here:
+        if (peliculas1.getSelectedIndex() >= 0) {
+            DefaultListModel m = (DefaultListModel) peliculas1.getModel();
+            pelis = (pelicula) m.get(peliculas1.getSelectedIndex());
+            modpeli.setModal(true);
+            modpeli.pack();
+            modpeli.setLocationRelativeTo(this);
+            modpeli.setVisible(true);
+        }
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        if (peliculas1.getSelectedIndex() >= 0) {
+            int jp = JOptionPane.showConfirmDialog(app, "Seguro que desea eliminar?");
+            if (jp == JOptionPane.YES_OPTION) {
+                DefaultListModel m = (DefaultListModel) peliculas1.getModel();
+                pelis = (pelicula) m.get(peliculas1.getSelectedIndex());
+                administrarpeliculas ap = new administrarpeliculas("./peliculas.txt");
+                try {
+                    ap.cargarArchivo();
+                } catch (IOException ex) {
+                    Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                if(peliculas1.getSelectedIndex() == (m.getSize())-1){
+                    ap.getListaPelicula().remove(ap.listaPelicula.size()-1);
+                }
+                for (pelicula t : ap.listaPelicula) {
+                    if (t.getNombre().equals(pelis.getNombre())) {
+                        ap.getListaPelicula().remove(t);
+                    }
+                }
+                try {
+                    ap.escribirArchivo();
+                } catch (IOException ex) {
+                    Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                m.remove(peliculas1.getSelectedIndex());
+                peliculas1.setModel(m);
+            }
+        }
+    }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
+        // TODO add your handling code here:
+        if (series1.getSelectedIndex() >= 0) {
+            DefaultListModel m = (DefaultListModel) series1.getModel();
+            series = (serie) m.get(series1.getSelectedIndex());
+            modserie.setModal(true);
+            modserie.pack();
+            modserie.setLocationRelativeTo(this);
+            modserie.setVisible(true);
+        }
+    }//GEN-LAST:event_jButton8MouseClicked
+
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+        // TODO add your handling code here:
+        if (series1.getSelectedIndex() >= 0) {
+            int jp = JOptionPane.showConfirmDialog(app, "Seguro que desea eliminar?");
+            if (jp == JOptionPane.YES_OPTION) {
+                DefaultListModel m = (DefaultListModel) series1.getModel();
+                series = (serie) m.get(series1.getSelectedIndex());
+                administrarseries ap = new administrarseries("./series.txt");
+                try {
+                    ap.cargarArchivo();
+                } catch (IOException ex) {
+                    Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                if(series1.getSelectedIndex() == (m.getSize())-1){
+                    ap.getListaSerie().remove(ap.listaSerie.size()-1);
+                }
+                for (serie t : ap.listaSerie) {
+                    if (t.getNombre().equals(series.getNombre())) {
+                        ap.getListaSerie().remove(t);
+                    }
+                }
+                try {
+                    ap.escribirArchivo();
+                } catch (IOException ex) {
+                    Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                m.remove(series1.getSelectedIndex());
+                series1.setModel(m);
+            }
+        }
+    }//GEN-LAST:event_jButton9MouseClicked
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton10ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -794,9 +1064,17 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JTextField correo;
     private javax.swing.JTextField fecha;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -816,7 +1094,11 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -826,7 +1108,11 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JDialog jd_admin;
+    private javax.swing.JDialog modpeli;
+    private javax.swing.JDialog modserie;
     private javax.swing.JTextField ntemp;
     private javax.swing.JPasswordField pass2;
     private javax.swing.JList<String> peliculas1;
@@ -840,4 +1126,6 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JTree tree1;
     private javax.swing.JTextField user;
     // End of variables declaration//GEN-END:variables
+   serie series = new serie();
+    pelicula pelis = new pelicula();
 }

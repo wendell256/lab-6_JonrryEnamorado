@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class pelicula {
 
-    int id;
+    String id;
     String nombre;
     String categoria;
     ArrayList<idioma> idiomas = new ArrayList();
@@ -25,7 +25,7 @@ public class pelicula {
     String duracion;
     int rating;
 
-    public pelicula(int id, String nombre, String categoria, String productora, String director, String duracion, int rating) {
+    public pelicula(String id, String nombre, String categoria, String productora, String director, String duracion, int rating) {
         this.id = id;
         this.nombre = nombre;
         this.categoria = categoria;
@@ -35,7 +35,7 @@ public class pelicula {
         this.rating = rating;
     }
 
-    public pelicula(int id, String nombre, String categoria, ArrayList<idioma> idiomas, ArrayList<sub> subtitulos, ArrayList<comments> comentarios, ArrayList<actores> actores, String productora, String director, String duracion, int rating) {
+    public pelicula(String id, String nombre, String categoria, ArrayList<idioma> idiomas, ArrayList<sub> subtitulos, ArrayList<comments> comentarios, ArrayList<actores> actores, String productora, String director, String duracion, int rating) {
         this.id = id;
         this.nombre = nombre;
         this.categoria = categoria;
@@ -56,11 +56,11 @@ public class pelicula {
         this.nombre = name;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

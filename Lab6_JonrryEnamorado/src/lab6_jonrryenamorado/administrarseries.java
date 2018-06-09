@@ -123,13 +123,13 @@ public class administrarseries {
                 while (token.hasMoreTokens()) {
                    
                     StringTokenizer token2 = new StringTokenizer(token.nextToken() , ";");
-                    int id, rating, temp;
-                    String nombre, categoria, productora, director, duracion;
+                    int  rating, temp;
+                    String id,nombre, categoria, productora, director, duracion;
                     ArrayList<idioma> idioma = new ArrayList();
                     ArrayList<sub> sub = new ArrayList();
                     ArrayList<comments> comments = new ArrayList();
                     ArrayList<actores> actores = new ArrayList();
-                    id = Integer.parseInt(token2.nextToken());
+                    id = token2.nextToken();
                     nombre = token2.nextToken();
                     categoria = token2.nextToken();
                     StringTokenizer token3 = new StringTokenizer(token2.nextToken() , ",");
@@ -166,7 +166,8 @@ public class administrarseries {
                     
                 }//fin persona
             } catch (Exception e) {
-                System.out.println("exception");
+                System.out.println("exceptions");
+                e.printStackTrace();
             }
             sc.close();
         }//fin if

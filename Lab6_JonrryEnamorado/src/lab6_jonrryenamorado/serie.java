@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author wende
  */
 public class serie{
-    int id;
+    String id;
     String nombre;
     String categoria;
     ArrayList<idioma> idiomas = new ArrayList();
@@ -31,7 +31,7 @@ public class serie{
         this.nombre = name;
     }
 
-    public serie(int id, String nombre, String categoria, String productora, String director, String duracion, int rating, int temp) {
+    public serie(String id, String nombre, String categoria, String productora, String director, String duracion, int rating, int temp) {
         this.temp = temp;
         this.id = id;
         this.nombre = nombre;
@@ -41,7 +41,7 @@ public class serie{
         this.duracion = duracion;
         this.rating = rating;
     }
-    public serie(int id, String nombre, String categoria,ArrayList<idioma> idiomas,ArrayList<sub> subtitulos,ArrayList<comments> comentarios,ArrayList<actores> actores,String productora, String director, String duracion, int rating, int temp) {
+    public serie(String id, String nombre, String categoria,ArrayList<idioma> idiomas,ArrayList<sub> subtitulos,ArrayList<comments> comentarios,ArrayList<actores> actores,String productora, String director, String duracion, int rating, int temp) {
         this.temp = temp;
         this.id = id;
         this.nombre = nombre;
@@ -56,11 +56,11 @@ public class serie{
         this.rating = rating;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
