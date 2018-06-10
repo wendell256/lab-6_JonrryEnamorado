@@ -729,7 +729,7 @@ public class principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         administrarseries ap = new administrarseries("./series.txt");
         administrarpeliculas apm = new administrarpeliculas("./peliculas.txt");
-        administrarusuario user = new administrarusuario("./usuarios.txt");
+        administrarusuario usuarios = new administrarusuario("./usuarios.txt");
         boolean ver = false;
         try {
             ap.cargarArchivo();
@@ -742,7 +742,7 @@ public class principal extends javax.swing.JFrame {
             Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            user.cargarArchivo();
+            usuarios.cargarArchivo();
         } catch (IOException ex) {
             Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -783,7 +783,7 @@ public class principal extends javax.swing.JFrame {
             app.setVisible(true);
 
         } else {
-            for (usuario t : user.getListausuario()) {
+            for (usuario t : usuarios.getListausuario()) {
                 if (t.getUser().equals(tf_user.getText()) && t.getContra().equals(pf_pass.getText())) {
                     ver = true;
                     users = t;
@@ -811,6 +811,48 @@ public class principal extends javax.swing.JFrame {
                     series1.setModel(modelo);
                     peliculas1.setModel(modelo2);
                     list++;
+
+                    DefaultTreeModel modeloARBOL = (DefaultTreeModel) tree1.getModel();
+                    DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+                    //obtener persona guardada
+                    DefaultListModel modeloLISTA = (DefaultListModel) peliculas1.getModel();
+                    String categoria, nombre, peli = "Peliculas";
+                    if (!users.getMovies().get(0).equals("n/a")) {
+                        for (pelicula t : users.getMovies()) {
+                            categoria = (t.getCategoria());
+                            nombre = (t.getNombre());
+                            int centinela = -1;
+                            boolean rep = false;
+                            for (int i = 0; i < raiz.getChildAt(0).getChildCount(); i++) {
+                                if (raiz.getChildAt(0).getChildAt(i).toString().equals(categoria)) {
+
+                                    for (int j = 0; j < raiz.getChildAt(0).getChildAt(i).getChildCount(); j++) {
+                                        if (raiz.getChildAt(0).getChildAt(i).getChildAt(j).toString().equals(nombre)) {
+                                            rep = true;
+                                        }
+                                    }
+                                    if (!rep) {
+                                        DefaultMutableTreeNode p = new DefaultMutableTreeNode(new pelicula(nombre, categoria));
+                                        ((DefaultMutableTreeNode) raiz.getChildAt(0).getChildAt(i)).add(p);
+                                        users.getMovies().add(new pelicula(nombre, categoria));
+                                    } else {
+
+                                    }
+
+                                    centinela = 1;
+                                }
+                            }
+                            if (centinela == -1) {
+                                DefaultMutableTreeNode n = new DefaultMutableTreeNode(categoria);
+                                DefaultMutableTreeNode p = new DefaultMutableTreeNode(new pelicula(nombre, categoria));
+                                n.add(p);
+                                ((DefaultMutableTreeNode) raiz.getChildAt(0)).add(n);
+                            }
+
+                            modeloARBOL.reload();
+                        }
+                    }
+
                 }
                 jButton6.setEnabled(false);
                 jButton5.setEnabled(false);
@@ -1002,6 +1044,43 @@ public class principal extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(jd_admin, "ERROR NO SE PUDO AGREGAR VERIFIQUE LOS DATOS");
             }
         }
+
+        DefaultListModel modelo = (DefaultListModel) series1.getModel();
+        DefaultListModel modelo2 = (DefaultListModel) peliculas1.getModel();
+        modelo.clear();
+        modelo2.clear();
+        administrarseries ap = new administrarseries("./series.txt");
+        administrarpeliculas apm = new administrarpeliculas("./peliculas.txt");
+        administrarusuario user = new administrarusuario("./usuarios.txt");
+        boolean ver = false;
+        try {
+            ap.cargarArchivo();
+        } catch (IOException ex) {
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            apm.cargarArchivo();
+        } catch (IOException ex) {
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            user.cargarArchivo();
+        } catch (IOException ex) {
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for (int i = 0; i < ap.listaSerie.size(); i++) {
+            modelo.addElement(new serie(ap.listaSerie.get(i).getId(), ap.listaSerie.get(i).getNombre(), ap.listaSerie.get(i).getCategoria(),
+                    ap.listaSerie.get(i).getIdiomas(), ap.listaSerie.get(i).getSubtitulos(), ap.listaSerie.get(i).getComentarios(), ap.listaSerie.get(i).getActores(), ap.listaSerie.get(i).getProductora(),
+                    ap.listaSerie.get(i).getDirector(), ap.listaSerie.get(i).getDuracion(), ap.listaSerie.get(i).getRating(), ap.listaSerie.get(i).getTemp()));
+        }
+
+        for (int i = 0; i < apm.listaPelicula.size(); i++) {
+            modelo2.addElement(new pelicula(apm.listaPelicula.get(i).getId(), apm.listaPelicula.get(i).getNombre(), apm.listaPelicula.get(i).getCategoria(),
+                    apm.listaPelicula.get(i).getIdiomas(), apm.listaPelicula.get(i).getSubtitulos(), apm.listaPelicula.get(i).getComentarios(), apm.listaPelicula.get(i).getActores(), apm.listaPelicula.get(i).getProductora(),
+                    apm.listaPelicula.get(i).getDirector(), apm.listaPelicula.get(i).getDuracion(), apm.listaPelicula.get(i).getRating()));
+        }
+        series1.setModel(modelo);
+        peliculas1.setModel(modelo2);
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
@@ -1441,7 +1520,7 @@ public class principal extends javax.swing.JFrame {
 
     private void prefmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prefmMouseClicked
         // TODO add your handling code here:
-        administrarusuario ap = new administrarusuario("./usuarios");
+        administrarusuario ap = new administrarusuario("./usuarios.txt");
         try {
             ap.cargarArchivo();
         } catch (IOException ex) {
@@ -1483,6 +1562,7 @@ public class principal extends javax.swing.JFrame {
                 DefaultMutableTreeNode p = new DefaultMutableTreeNode(new pelicula(nombre, categoria));
                 n.add(p);
                 ((DefaultMutableTreeNode) raiz.getChildAt(0)).add(n);
+                users.getMovies().add(new pelicula(nombre, categoria));
             }
 
             for (usuario t : ap.getListausuario()) {
@@ -1503,7 +1583,7 @@ public class principal extends javax.swing.JFrame {
 
     private void prefsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prefsMouseClicked
         // TODO add your handling code here:
-        administrarusuario ap = new administrarusuario("./usuarios");
+        administrarusuario ap = new administrarusuario("./usuarios.txt");
         try {
             ap.cargarArchivo();
         } catch (IOException ex) {
