@@ -48,10 +48,14 @@ public class pelicula {
         this.duracion = duracion;
         this.rating = rating;
     }
-    
-    
     public pelicula() {
     }
+    public pelicula(String nombre, String Categoria) {
+        this.nombre = nombre;
+        this.categoria = categoria;
+    }
+    
+    
     public pelicula(String name) {
         this.nombre = name;
     }

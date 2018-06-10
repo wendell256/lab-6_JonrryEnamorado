@@ -12,6 +12,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -51,11 +53,12 @@ public class principal extends javax.swing.JFrame {
         peliculas1 = new javax.swing.JList<>();
         bt_admin = new javax.swing.JButton();
         bt_cuenta = new javax.swing.JButton();
-        pref = new javax.swing.JButton();
+        prefm = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
+        prefs = new javax.swing.JButton();
         register = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -125,6 +128,10 @@ public class principal extends javax.swing.JFrame {
         );
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Preferidas");
+        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Peliculas");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Series");
+        treeNode1.add(treeNode2);
         tree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jScrollPane4.setViewportView(tree1);
 
@@ -145,7 +152,12 @@ public class principal extends javax.swing.JFrame {
 
         bt_cuenta.setText("Cuenta");
 
-        pref.setText("Agregar a Pref");
+        prefm.setText("Agregar a Pref");
+        prefm.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                prefmMouseClicked(evt);
+            }
+        });
 
         jButton5.setText("Modificar");
         jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -174,6 +186,8 @@ public class principal extends javax.swing.JFrame {
                 jButton9MouseClicked(evt);
             }
         });
+
+        prefs.setText("Agregar a Pref");
 
         javax.swing.GroupLayout appLayout = new javax.swing.GroupLayout(app.getContentPane());
         app.getContentPane().setLayout(appLayout);
@@ -204,15 +218,18 @@ public class principal extends javax.swing.JFrame {
                                     .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(appLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(appLayout.createSequentialGroup()
-                        .addComponent(pref)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
                     .addGroup(appLayout.createSequentialGroup()
                         .addGroup(appLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(bt_cuenta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(bt_admin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())))
+            .addGroup(appLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(prefs, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addComponent(prefm)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         appLayout.setVerticalGroup(
             appLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,9 +240,11 @@ public class principal extends javax.swing.JFrame {
                     .addComponent(bt_admin))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bt_cuenta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pref)
-                .addGap(24, 24, 24)
+                .addGap(18, 18, 18)
+                .addGroup(appLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(prefm)
+                    .addComponent(prefs))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(appLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
@@ -678,7 +697,7 @@ public class principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    int list = 0;
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
         administrarseries ap = new administrarseries("./series.txt");
@@ -709,11 +728,13 @@ public class principal extends javax.swing.JFrame {
             jButton8.setEnabled(true);
             jButton9.setEnabled(true);
             bt_admin.setEnabled(true);
-            pref.setEnabled(false);
+            prefs.setEnabled(false);
+            prefm.setEnabled(false);
             bt_cuenta.setEnabled(false);
             DefaultListModel modelo = (DefaultListModel) series1.getModel();
             DefaultListModel modelo2 = (DefaultListModel) peliculas1.getModel();
-
+            
+            if(list <1){
             for (int i = 0; i < ap.listaSerie.size(); i++) {
                 modelo.addElement(new serie(ap.listaSerie.get(i).getId(), ap.listaSerie.get(i).getNombre(), ap.listaSerie.get(i).getCategoria(),
                         ap.listaSerie.get(i).getIdiomas(), ap.listaSerie.get(i).getSubtitulos(), ap.listaSerie.get(i).getComentarios(), ap.listaSerie.get(i).getActores(), ap.listaSerie.get(i).getProductora(),
@@ -727,7 +748,8 @@ public class principal extends javax.swing.JFrame {
             }
             series1.setModel(modelo);
             peliculas1.setModel(modelo2);
-
+            list++;
+            }
             app.setModal(true);
             app.pack();
             app.setLocationRelativeTo(this);
@@ -740,10 +762,11 @@ public class principal extends javax.swing.JFrame {
                 }
             }
             if (ver) {
+                if(list<1){
                 DefaultListModel modelo = (DefaultListModel) series1.getModel();
                 DefaultListModel modelo2 = (DefaultListModel) peliculas1.getModel();
                 bt_admin.setEnabled(false);
-                pref.setEnabled(true);
+                prefm.setEnabled(true);
 
                 bt_cuenta.setEnabled(true);
                 for (int i = 0; i < ap.listaSerie.size(); i++) {
@@ -759,6 +782,8 @@ public class principal extends javax.swing.JFrame {
                 }
                 series1.setModel(modelo);
                 peliculas1.setModel(modelo2);
+                list++;
+                }
                 jButton6.setEnabled(false);
                 jButton5.setEnabled(false);
                 jButton8.setEnabled(false);
@@ -1361,6 +1386,51 @@ public class principal extends javax.swing.JFrame {
         modserie.setVisible(false);
     }//GEN-LAST:event_jButton7MouseClicked
 
+    private void prefmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prefmMouseClicked
+        // TODO add your handling code here:
+        if (peliculas1.getSelectedIndex() >= 0) {
+            DefaultTreeModel modeloARBOL = (DefaultTreeModel) tree1.getModel();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+            //obtener persona guardada
+            DefaultListModel modeloLISTA = (DefaultListModel) peliculas1.getModel();
+            String categoria, nombre, peli = "Peliculas";
+            
+            categoria = ((pelicula) modeloLISTA.get(peliculas1.getSelectedIndex())).getCategoria();
+            nombre = ((pelicula) modeloLISTA.get(peliculas1.getSelectedIndex())).getNombre();
+            
+
+            int centinela = -1;
+            boolean rep = false;
+            for (int i = 0; i < raiz.getChildAt(0).getChildCount(); i++) {
+                if (raiz.getChildAt(0).getChildAt(i).toString().equals(categoria)) {
+
+                    for (int j = 0; j < raiz.getChildAt(0).getChildAt(i).getChildCount(); j++) {
+                        if (raiz.getChildAt(0).getChildAt(i).getChildAt(j).toString().equals(nombre)) {
+                            rep = true;
+                        }
+                    }
+                    if (!rep) {
+                        DefaultMutableTreeNode p = new DefaultMutableTreeNode(new pelicula(nombre, categoria));
+                        ((DefaultMutableTreeNode) raiz.getChildAt(0).getChildAt(i)).add(p);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "PELICULA YA ESTA EN ARBOL");
+                    }
+
+                    centinela = 1;
+                }
+            }
+            if (centinela == -1) {
+                DefaultMutableTreeNode n = new DefaultMutableTreeNode(categoria);
+                DefaultMutableTreeNode p = new DefaultMutableTreeNode(new pelicula(nombre, categoria));
+                n.add(p);
+                ((DefaultMutableTreeNode) raiz.getChildAt(0)).add(n);
+            }
+            modeloARBOL.reload();
+        } else {
+            JOptionPane.showMessageDialog(this, "No hay señores seleccionados");
+        }
+    }//GEN-LAST:event_prefmMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1468,7 +1538,8 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JList<String> peliculas1;
     private javax.swing.JPasswordField pf_pass;
     private javax.swing.JComboBox<String> pos;
-    private javax.swing.JButton pref;
+    private javax.swing.JButton prefm;
+    private javax.swing.JButton prefs;
     private javax.swing.JDialog register;
     private javax.swing.JList<String> series1;
     private javax.swing.JTextField tarjeta;
