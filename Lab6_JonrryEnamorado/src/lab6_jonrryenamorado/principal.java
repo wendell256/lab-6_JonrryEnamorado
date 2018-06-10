@@ -101,14 +101,14 @@ public class principal extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         modserie = new javax.swing.JDialog();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
+        editdatos = new javax.swing.JComboBox<>();
+        newdat1 = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
         modpeli = new javax.swing.JDialog();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jTextField2 = new javax.swing.JTextField();
+        editdato = new javax.swing.JComboBox<>();
+        newdat = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jButton10 = new javax.swing.JButton();
@@ -492,13 +492,18 @@ public class principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID:", "Nombre:", "Categoria:", "Idiomas:", "Subtitulos:", "Comentarios:", "Actores:", "Productora:", "Director:", "Duracion:", "Rating:", "Temporadas:" }));
+        editdatos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID:", "Nombre:", "Categoria:", "Idiomas:", "Subtitulos:", "Comentarios:", "Actores:", "Productora:", "Director:", "Duracion:", "Rating:", "Temporadas:" }));
 
         jLabel27.setText("Dato a Editar:");
 
         jLabel28.setText("Nuevo Dato:");
 
         jButton7.setText("Set");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -512,12 +517,12 @@ public class principal extends javax.swing.JFrame {
             .addGroup(modserieLayout.createSequentialGroup()
                 .addGap(98, 98, 98)
                 .addGroup(modserieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editdatos, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel27))
                 .addGap(18, 18, 18)
                 .addGroup(modserieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(modserieLayout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(newdat1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(85, Short.MAX_VALUE))
                     .addGroup(modserieLayout.createSequentialGroup()
                         .addComponent(jLabel28)
@@ -536,23 +541,29 @@ public class principal extends javax.swing.JFrame {
                     .addComponent(jLabel28))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(modserieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(editdatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newdat1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton7)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID:", "Nombre:", "Categoria:", "Idiomas:", "Subtitulos:", "Comentarios:", "Actores:", "Productora:", "Director:", "Duracion:", "Rating:", "Temporadas:" }));
+        editdato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID:", "Nombre:", "Categoria:", "Idiomas:", "Subtitulos:", "Comentarios:", "Actores:", "Productora:", "Director:", "Duracion:", "Rating:" }));
+
+        newdat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newdatActionPerformed(evt);
+            }
+        });
 
         jLabel29.setText("Dato a Editar:");
 
         jLabel30.setText("Nuevo Dato:");
 
         jButton10.setText("Set");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton10MouseClicked(evt);
             }
         });
 
@@ -563,12 +574,12 @@ public class principal extends javax.swing.JFrame {
             .addGroup(modpeliLayout.createSequentialGroup()
                 .addGap(98, 98, 98)
                 .addGroup(modpeliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editdato, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel29))
                 .addGap(18, 18, 18)
                 .addGroup(modpeliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(modpeliLayout.createSequentialGroup()
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(newdat, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(63, Short.MAX_VALUE))
                     .addGroup(modpeliLayout.createSequentialGroup()
                         .addComponent(jLabel30)
@@ -587,8 +598,8 @@ public class principal extends javax.swing.JFrame {
                     .addComponent(jLabel30))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(modpeliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(editdato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newdat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton10)
                 .addContainerGap(28, Short.MAX_VALUE))
@@ -940,8 +951,8 @@ public class principal extends javax.swing.JFrame {
                 } catch (IOException ex) {
                     Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                if(peliculas1.getSelectedIndex() == (m.getSize())-1){
-                    ap.getListaPelicula().remove(ap.listaPelicula.size()-1);
+                if (peliculas1.getSelectedIndex() == (m.getSize()) - 1) {
+                    ap.getListaPelicula().remove(ap.listaPelicula.size() - 1);
                 }
                 for (pelicula t : ap.listaPelicula) {
                     if (t.getNombre().equals(pelis.getNombre())) {
@@ -984,8 +995,8 @@ public class principal extends javax.swing.JFrame {
                 } catch (IOException ex) {
                     Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                if(series1.getSelectedIndex() == (m.getSize())-1){
-                    ap.getListaSerie().remove(ap.listaSerie.size()-1);
+                if (series1.getSelectedIndex() == (m.getSize()) - 1) {
+                    ap.getListaSerie().remove(ap.listaSerie.size() - 1);
                 }
                 for (serie t : ap.listaSerie) {
                     if (t.getNombre().equals(series.getNombre())) {
@@ -1007,9 +1018,348 @@ public class principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+    private void newdatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newdatActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
+    }//GEN-LAST:event_newdatActionPerformed
+
+    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
+        // TODO add your handling code here:
+        administrarpeliculas ap = new administrarpeliculas("./peliculas.txt");
+        try {
+            ap.cargarArchivo();
+        } catch (IOException ex) {
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        switch (editdato.getSelectedIndex()) {
+            case 0:
+                for (pelicula t : ap.getListaPelicula()) {
+                    if (t.getId().equals(pelis.getId())) {
+                        int pos = ap.getListaPelicula().lastIndexOf(t);
+                    }
+
+                }
+                boolean ver = false;
+                while (!ver) {
+                    ver = true;
+                }
+                for (pelicula t : ap.getListaPelicula()) {
+                    if (t.getId().equals(newdat.getText())) {
+                        ver = false;
+                    }
+
+                }
+                if (ver) {
+                    pelis.setId(newdat.getText());
+                    ap.getListaPelicula().set(ap.getListaPelicula().lastIndexOf(pos), pelis);
+
+                } else {
+                    newdat.setText(JOptionPane.showInputDialog(modpeli, "ID YA EXISTE INGRESE OTRO"));
+                    pelis.setId(newdat.getText());
+                    ap.getListaPelicula().set(ap.getListaPelicula().lastIndexOf(pos), pelis);
+                }
+                break;
+            case 1:
+                pelis.setNombre(newdat.getText());
+                for (pelicula t : ap.getListaPelicula()) {
+                    if (t.getId().equals(pelis.getId())) {
+                        ap.getListaPelicula().set(ap.getListaPelicula().lastIndexOf(t), pelis);
+                    }
+                }
+                break;
+            case 2:
+                pelis.setCategoria(newdat.getText());
+                for (pelicula t : ap.getListaPelicula()) {
+                    if (t.getId().equals(pelis.getId())) {
+                        ap.getListaPelicula().set(ap.getListaPelicula().lastIndexOf(t), pelis);
+                    }
+                }
+                break;
+            case 3:
+                ArrayList<idioma> idiomas = new ArrayList();
+                Scanner s = new Scanner(newdat.getText());
+                s.useDelimiter(",");
+                while (s.hasNext()) {
+                    idiomas.add(new idioma(s.next()));
+                }
+                pelis.setIdiomas(idiomas);
+                for (pelicula t : ap.getListaPelicula()) {
+                    if (t.getId().equals(pelis.getId())) {
+                        ap.getListaPelicula().set(ap.getListaPelicula().lastIndexOf(t), pelis);
+                    }
+                }
+                break;
+            case 4:
+                ArrayList<sub> sub = new ArrayList();
+                Scanner s2 = new Scanner(newdat.getText());
+                s2.useDelimiter(",");
+                while (s2.hasNext()) {
+                    sub.add(new sub(s2.next()));
+                }
+                pelis.setSubtitulos(sub);
+                for (pelicula t : ap.getListaPelicula()) {
+                    if (t.getId().equals(pelis.getId())) {
+                        ap.getListaPelicula().set(ap.getListaPelicula().lastIndexOf(t), pelis);
+                    }
+                }
+
+                break;
+            case 5:
+                ArrayList<comments> com = new ArrayList();
+                Scanner s3 = new Scanner(newdat.getText());
+                s3.useDelimiter(",");
+                while (s3.hasNext()) {
+                    com.add(new comments(s3.next()));
+                }
+                pelis.setComentarios(com);
+                for (pelicula t : ap.getListaPelicula()) {
+                    if (t.getId().equals(pelis.getId())) {
+                        ap.getListaPelicula().set(ap.getListaPelicula().lastIndexOf(t), pelis);
+                    }
+                }
+
+                break;
+            case 6:
+                ArrayList<actores> actor = new ArrayList();
+                Scanner s4 = new Scanner(newdat.getText());
+                s4.useDelimiter(",");
+                while (s4.hasNext()) {
+                    actor.add(new actores(s4.next()));
+                }
+                pelis.setActores(actor);
+                for (pelicula t : ap.getListaPelicula()) {
+                    if (t.getId().equals(pelis.getId())) {
+                        ap.getListaPelicula().set(ap.getListaPelicula().lastIndexOf(t), pelis);
+                    }
+                }
+
+                break;
+            case 7:
+                pelis.setProductora(newdat.getText());
+                for (pelicula t : ap.getListaPelicula()) {
+                    if (t.getId().equals(pelis.getId())) {
+                        ap.getListaPelicula().set(ap.getListaPelicula().lastIndexOf(t), pelis);
+                    }
+                }
+                break;
+            case 8:
+                pelis.setDirector(newdat.getText());
+                for (pelicula t : ap.getListaPelicula()) {
+                    if (t.getId().equals(pelis.getId())) {
+                        ap.getListaPelicula().set(ap.getListaPelicula().lastIndexOf(t), pelis);
+                    }
+                }
+                break;
+            case 9:
+                pelis.setDuracion(newdat.getText());
+                for (pelicula t : ap.getListaPelicula()) {
+                    if (t.getId().equals(pelis.getId())) {
+                        ap.getListaPelicula().set(ap.getListaPelicula().lastIndexOf(t), pelis);
+                    }
+                }
+                break;
+            case 10:
+                int rate = Integer.parseInt(newdat.getText());
+                if (rate > 5 || rate < 1) {
+                    JOptionPane.showMessageDialog(modpeli, "ERROR RATING NO VALIDO");
+                } else {
+                    pelis.setRating(rate);
+                    for (pelicula t : ap.getListaPelicula()) {
+                        if (t.getId().equals(pelis.getId())) {
+                            ap.getListaPelicula().set(ap.getListaPelicula().lastIndexOf(t), pelis);
+                        }
+                    }
+                }
+                break;
+        }
+        try {
+            ap.escribirArchivo();
+        } catch (IOException ex) {
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        DefaultListModel m = (DefaultListModel) peliculas1.getModel();
+
+        for (int i = 0; i < ap.listaPelicula.size() - 1; i++) {
+            m.addElement(new pelicula(ap.listaPelicula.get(i).getId(), ap.listaPelicula.get(i).getNombre(), ap.listaPelicula.get(i).getCategoria(),
+                    ap.listaPelicula.get(i).getIdiomas(), ap.listaPelicula.get(i).getSubtitulos(), ap.listaPelicula.get(i).getComentarios(), ap.listaPelicula.get(i).getActores(), ap.listaPelicula.get(i).getProductora(),
+                    ap.listaPelicula.get(i).getDirector(), ap.listaPelicula.get(i).getDuracion(), ap.listaPelicula.get(i).getRating()));
+        }
+        peliculas1.setModel(m);
+        JOptionPane.showMessageDialog(app, "DATO EDITADO EXITOSAMENTE!");
+        modpeli.setVisible(false);
+    }//GEN-LAST:event_jButton10MouseClicked
+
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        // TODO add your handling code here:
+        administrarseries ap = new administrarseries("./series.txt");
+        try {
+            ap.cargarArchivo();
+        } catch (IOException ex) {
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        switch (editdatos.getSelectedIndex()) {
+            case 0:
+                for (serie t : ap.getListaSerie()) {
+                    if (t.getId().equals(series.getId())) {
+                        int pos = ap.getListaSerie().lastIndexOf(t);
+                    }
+
+                }
+                boolean ver = false;
+                while (!ver) {
+                    ver = true;
+                }
+                for (serie t : ap.getListaSerie()) {
+                    if (t.getId().equals(newdat1.getText())) {
+                        ver = false;
+                    }
+
+                }
+                if (ver) {
+                    series.setId(newdat1.getText());
+                    ap.getListaSerie().set(ap.getListaSerie().lastIndexOf(pos), series);
+
+                } else {
+                    newdat1.setText(JOptionPane.showInputDialog(modpeli, "ID YA EXISTE INGRESE OTRO"));
+                    series.setId(newdat1.getText());
+                    ap.getListaSerie().set(ap.getListaSerie().lastIndexOf(pos), series);
+                }
+                break;
+            case 1:
+                series.setNombre(newdat1.getText());
+                for (serie t : ap.getListaSerie()) {
+                    if (t.getId().equals(series.getId())) {
+                        ap.getListaSerie().set(ap.getListaSerie().lastIndexOf(t), series);
+                    }
+                }
+                break;
+            case 2:
+                series.setCategoria(newdat1.getText());
+                for (serie t : ap.getListaSerie()) {
+                    if (t.getId().equals(series.getId())) {
+                        ap.getListaSerie().set(ap.getListaSerie().lastIndexOf(t), series);
+                    }
+                }
+                break;
+            case 3:
+                ArrayList<idioma> idiomas = new ArrayList();
+                Scanner s = new Scanner(newdat1.getText());
+                s.useDelimiter(",");
+                while (s.hasNext()) {
+                    idiomas.add(new idioma(s.next()));
+                }
+                series.setIdiomas(idiomas);
+                for (serie t : ap.getListaSerie()) {
+                    if (t.getId().equals(series.getId())) {
+                        ap.getListaSerie().set(ap.getListaSerie().lastIndexOf(t), series);
+                    }
+                }
+                break;
+            case 4:
+                ArrayList<sub> sub = new ArrayList();
+                Scanner s2 = new Scanner(newdat1.getText());
+                s2.useDelimiter(",");
+                while (s2.hasNext()) {
+                    sub.add(new sub(s2.next()));
+                }
+                series.setSubtitulos(sub);
+                for (serie t : ap.getListaSerie()) {
+                    if (t.getId().equals(series.getId())) {
+                        ap.getListaSerie().set(ap.getListaSerie().lastIndexOf(t), series);
+                    }
+                }
+
+                break;
+            case 5:
+                ArrayList<comments> com = new ArrayList();
+                Scanner s3 = new Scanner(newdat1.getText());
+                s3.useDelimiter(",");
+                while (s3.hasNext()) {
+                    com.add(new comments(s3.next()));
+                }
+                series.setComentarios(com);
+                for (serie t : ap.getListaSerie()) {
+                    if (t.getId().equals(series.getId())) {
+                        ap.getListaSerie().set(ap.getListaSerie().lastIndexOf(t), series);
+                    }
+                }
+
+                break;
+            case 6:
+                ArrayList<actores> actor = new ArrayList();
+                Scanner s4 = new Scanner(newdat1.getText());
+                s4.useDelimiter(",");
+                while (s4.hasNext()) {
+                    actor.add(new actores(s4.next()));
+                }
+                series.setActores(actor);
+                for (serie t : ap.getListaSerie()) {
+                    if (t.getId().equals(series.getId())) {
+                        ap.getListaSerie().set(ap.getListaSerie().lastIndexOf(t), series);
+                    }
+                }
+
+                break;
+            case 7:
+                series.setProductora(newdat1.getText());
+                for (serie t : ap.getListaSerie()) {
+                    if (t.getId().equals(series.getId())) {
+                        ap.getListaSerie().set(ap.getListaSerie().lastIndexOf(t), series);
+                    }
+                }
+                break;
+            case 8:
+                series.setDirector(newdat1.getText());
+                for (serie t : ap.getListaSerie()) {
+                    if (t.getId().equals(series.getId())) {
+                        ap.getListaSerie().set(ap.getListaSerie().lastIndexOf(t), series);
+                    }
+                }
+                break;
+            case 9:
+                series.setDuracion(newdat1.getText());
+                for (serie t : ap.getListaSerie()) {
+                    if (t.getId().equals(series.getId())) {
+                        ap.getListaSerie().set(ap.getListaSerie().lastIndexOf(t), series);
+                    }
+                }
+                break;
+            case 10:
+                int rate = Integer.parseInt(newdat1.getText());
+                if (rate > 5 || rate < 1) {
+                    JOptionPane.showMessageDialog(modserie, "ERROR RATING NO VALIDO");
+                } else {
+                    series.setRating(rate);
+                    for (serie t : ap.getListaSerie()) {
+                        if (t.getId().equals(pelis.getId())) {
+                            ap.getListaSerie().set(ap.getListaSerie().lastIndexOf(t), series);
+                        }
+                    }
+                }
+                break;
+            case 11:
+                series.setTemp((Integer.parseInt(newdat1.getText())));
+                for (serie t : ap.getListaSerie()) {
+                    if (t.getId().equals(series.getId())) {
+                        ap.getListaSerie().set(ap.getListaSerie().lastIndexOf(t), series);
+                    }
+                }
+        }
+        try {
+            ap.escribirArchivo();
+        } catch (IOException ex) {
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        DefaultListModel m = (DefaultListModel) series1.getModel();
+
+        for (int i = 0; i < ap.listaSerie.size() - 1; i++) {
+            m.addElement(new serie(ap.listaSerie.get(i).getId(), ap.listaSerie.get(i).getNombre(), ap.listaSerie.get(i).getCategoria(),
+                    ap.listaSerie.get(i).getIdiomas(), ap.listaSerie.get(i).getSubtitulos(), ap.listaSerie.get(i).getComentarios(), ap.listaSerie.get(i).getActores(), ap.listaSerie.get(i).getProductora(),
+                    ap.listaSerie.get(i).getDirector(), ap.listaSerie.get(i).getDuracion(), ap.listaSerie.get(i).getRating(), ap.listaSerie.get(i).getTemp()));
+        }
+        series1.setModel(m);
+        JOptionPane.showMessageDialog(app, "DATO EDITADO EXITOSAMENTE!");
+        modserie.setVisible(false);
+    }//GEN-LAST:event_jButton7MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1062,6 +1412,8 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JButton bt_admin;
     private javax.swing.JButton bt_cuenta;
     private javax.swing.JTextField correo;
+    private javax.swing.JComboBox<String> editdato;
+    private javax.swing.JComboBox<String> editdatos;
     private javax.swing.JTextField fecha;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
@@ -1073,8 +1425,6 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1108,11 +1458,11 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JDialog jd_admin;
     private javax.swing.JDialog modpeli;
     private javax.swing.JDialog modserie;
+    private javax.swing.JTextField newdat;
+    private javax.swing.JTextField newdat1;
     private javax.swing.JTextField ntemp;
     private javax.swing.JPasswordField pass2;
     private javax.swing.JList<String> peliculas1;
