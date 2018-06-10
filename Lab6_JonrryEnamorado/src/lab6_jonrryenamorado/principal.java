@@ -115,6 +115,7 @@ public class principal extends javax.swing.JFrame {
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jButton10 = new javax.swing.JButton();
+        cuent = new javax.swing.JDialog();
         jLabel6 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         tf_user = new javax.swing.JTextField();
@@ -143,7 +144,7 @@ public class principal extends javax.swing.JFrame {
         peliculas1.setModel(new DefaultListModel());
         jScrollPane6.setViewportView(peliculas1);
 
-        bt_admin.setText("Agregar Movie");
+        bt_admin.setText("Agregar");
         bt_admin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bt_adminMouseClicked(evt);
@@ -151,6 +152,11 @@ public class principal extends javax.swing.JFrame {
         });
 
         bt_cuenta.setText("Cuenta");
+        bt_cuenta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_cuentaMouseClicked(evt);
+            }
+        });
 
         prefm.setText("Agregar a Pref");
         prefm.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -376,6 +382,11 @@ public class principal extends javax.swing.JFrame {
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton2MouseClicked(evt);
+            }
+        });
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -629,6 +640,17 @@ public class principal extends javax.swing.JFrame {
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
+        javax.swing.GroupLayout cuentLayout = new javax.swing.GroupLayout(cuent.getContentPane());
+        cuent.getContentPane().setLayout(cuentLayout);
+        cuentLayout.setHorizontalGroup(
+            cuentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        cuentLayout.setVerticalGroup(
+            cuentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel6.setText("Password:");
@@ -738,43 +760,8 @@ public class principal extends javax.swing.JFrame {
             bt_cuenta.setEnabled(false);
             DefaultListModel modelo = (DefaultListModel) series1.getModel();
             DefaultListModel modelo2 = (DefaultListModel) peliculas1.getModel();
-            
-            if(list <1){
-            for (int i = 0; i < ap.listaSerie.size(); i++) {
-                modelo.addElement(new serie(ap.listaSerie.get(i).getId(), ap.listaSerie.get(i).getNombre(), ap.listaSerie.get(i).getCategoria(),
-                        ap.listaSerie.get(i).getIdiomas(), ap.listaSerie.get(i).getSubtitulos(), ap.listaSerie.get(i).getComentarios(), ap.listaSerie.get(i).getActores(), ap.listaSerie.get(i).getProductora(),
-                        ap.listaSerie.get(i).getDirector(), ap.listaSerie.get(i).getDuracion(), ap.listaSerie.get(i).getRating(), ap.listaSerie.get(i).getTemp()));
-            }
 
-            for (int i = 0; i < apm.listaPelicula.size(); i++) {
-                modelo2.addElement(new pelicula(apm.listaPelicula.get(i).getId(), apm.listaPelicula.get(i).getNombre(), apm.listaPelicula.get(i).getCategoria(),
-                        apm.listaPelicula.get(i).getIdiomas(), apm.listaPelicula.get(i).getSubtitulos(), apm.listaPelicula.get(i).getComentarios(), apm.listaPelicula.get(i).getActores(), apm.listaPelicula.get(i).getProductora(),
-                        apm.listaPelicula.get(i).getDirector(), apm.listaPelicula.get(i).getDuracion(), apm.listaPelicula.get(i).getRating()));
-            }
-            series1.setModel(modelo);
-            peliculas1.setModel(modelo2);
-            list++;
-            }
-            app.setModal(true);
-            app.pack();
-            app.setLocationRelativeTo(this);
-            app.setVisible(true);
-
-        } else {
-            for (usuario t : user.getListausuario()) {
-                if (t.getUser().equals(tf_user.getText()) && t.getContra().equals(pf_pass.getText())) {
-                    ver = true;
-                    users = t;
-                }
-            }
-            if (ver) {
-                if(list<1){
-                DefaultListModel modelo = (DefaultListModel) series1.getModel();
-                DefaultListModel modelo2 = (DefaultListModel) peliculas1.getModel();
-                bt_admin.setEnabled(false);
-                prefm.setEnabled(true);
-
-                bt_cuenta.setEnabled(true);
+            if (list < 1) {
                 for (int i = 0; i < ap.listaSerie.size(); i++) {
                     modelo.addElement(new serie(ap.listaSerie.get(i).getId(), ap.listaSerie.get(i).getNombre(), ap.listaSerie.get(i).getCategoria(),
                             ap.listaSerie.get(i).getIdiomas(), ap.listaSerie.get(i).getSubtitulos(), ap.listaSerie.get(i).getComentarios(), ap.listaSerie.get(i).getActores(), ap.listaSerie.get(i).getProductora(),
@@ -789,6 +776,41 @@ public class principal extends javax.swing.JFrame {
                 series1.setModel(modelo);
                 peliculas1.setModel(modelo2);
                 list++;
+            }
+            app.setModal(true);
+            app.pack();
+            app.setLocationRelativeTo(this);
+            app.setVisible(true);
+
+        } else {
+            for (usuario t : user.getListausuario()) {
+                if (t.getUser().equals(tf_user.getText()) && t.getContra().equals(pf_pass.getText())) {
+                    ver = true;
+                    users = t;
+                }
+            }
+            if (ver) {
+                if (list < 1) {
+                    DefaultListModel modelo = (DefaultListModel) series1.getModel();
+                    DefaultListModel modelo2 = (DefaultListModel) peliculas1.getModel();
+                    bt_admin.setEnabled(false);
+                    prefm.setEnabled(true);
+
+                    bt_cuenta.setEnabled(true);
+                    for (int i = 0; i < ap.listaSerie.size(); i++) {
+                        modelo.addElement(new serie(ap.listaSerie.get(i).getId(), ap.listaSerie.get(i).getNombre(), ap.listaSerie.get(i).getCategoria(),
+                                ap.listaSerie.get(i).getIdiomas(), ap.listaSerie.get(i).getSubtitulos(), ap.listaSerie.get(i).getComentarios(), ap.listaSerie.get(i).getActores(), ap.listaSerie.get(i).getProductora(),
+                                ap.listaSerie.get(i).getDirector(), ap.listaSerie.get(i).getDuracion(), ap.listaSerie.get(i).getRating(), ap.listaSerie.get(i).getTemp()));
+                    }
+
+                    for (int i = 0; i < apm.listaPelicula.size(); i++) {
+                        modelo2.addElement(new pelicula(apm.listaPelicula.get(i).getId(), apm.listaPelicula.get(i).getNombre(), apm.listaPelicula.get(i).getCategoria(),
+                                apm.listaPelicula.get(i).getIdiomas(), apm.listaPelicula.get(i).getSubtitulos(), apm.listaPelicula.get(i).getComentarios(), apm.listaPelicula.get(i).getActores(), apm.listaPelicula.get(i).getProductora(),
+                                apm.listaPelicula.get(i).getDirector(), apm.listaPelicula.get(i).getDuracion(), apm.listaPelicula.get(i).getRating()));
+                    }
+                    series1.setModel(modelo);
+                    peliculas1.setModel(modelo2);
+                    list++;
                 }
                 jButton6.setEnabled(false);
                 jButton5.setEnabled(false);
@@ -946,6 +968,31 @@ public class principal extends javax.swing.JFrame {
                 ArrayList<sub> subs = new ArrayList();
                 ArrayList<comments> coments = new ArrayList();
                 ArrayList<actores> actores = new ArrayList();
+                String s_idiomas = aid.getText();
+                String s_subs = asub.getText();
+                String s_coments = acom.getText();
+                String s_act = aact.getText();
+
+                Scanner id = new Scanner(s_idiomas);
+                id.useDelimiter(",");
+                while (id.hasNext()) {
+                    idiomas.add(new idioma(id.next()));
+                }
+                id = new Scanner(s_subs);
+                id.useDelimiter(",");
+                while (id.hasNext()) {
+                    subs.add(new sub(id.next()));
+                }
+                id = new Scanner(s_coments);
+                id.useDelimiter(",");
+                while (id.hasNext()) {
+                    coments.add(new comments(id.next()));
+                }
+                id = new Scanner(s_act);
+                id.useDelimiter(",");
+                while (id.hasNext()) {
+                    actores.add(new actores(id.next()));
+                }
                 pelicula e = new pelicula(a_id.getText(), anm.getText(), act.getText(), idiomas, subs, coments, actores, aprod.getText(), adir.getText(),
                         adur.getText(), Integer.parseInt(arat.getSelectedItem().toString()));
                 dp.setPelicula(e);
@@ -1406,10 +1453,9 @@ public class principal extends javax.swing.JFrame {
             //obtener persona guardada
             DefaultListModel modeloLISTA = (DefaultListModel) peliculas1.getModel();
             String categoria, nombre, peli = "Peliculas";
-            
+
             categoria = ((pelicula) modeloLISTA.get(peliculas1.getSelectedIndex())).getCategoria();
             nombre = ((pelicula) modeloLISTA.get(peliculas1.getSelectedIndex())).getNombre();
-            
 
             int centinela = -1;
             boolean rep = false;
@@ -1424,7 +1470,7 @@ public class principal extends javax.swing.JFrame {
                     if (!rep) {
                         DefaultMutableTreeNode p = new DefaultMutableTreeNode(new pelicula(nombre, categoria));
                         ((DefaultMutableTreeNode) raiz.getChildAt(0).getChildAt(i)).add(p);
-                        users.getMovies().add(new pelicula(nombre,categoria));
+                        users.getMovies().add(new pelicula(nombre, categoria));
                     } else {
                         JOptionPane.showMessageDialog(this, "PELICULA YA ESTA EN ARBOL");
                     }
@@ -1438,9 +1484,9 @@ public class principal extends javax.swing.JFrame {
                 n.add(p);
                 ((DefaultMutableTreeNode) raiz.getChildAt(0)).add(n);
             }
-            
+
             for (usuario t : ap.getListausuario()) {
-                if(t.getUser().equals(users.getUser())){
+                if (t.getUser().equals(users.getUser())) {
                     ap.getListausuario().set(ap.getListausuario().lastIndexOf(t), users);
                 }
             }
@@ -1457,16 +1503,21 @@ public class principal extends javax.swing.JFrame {
 
     private void prefsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prefsMouseClicked
         // TODO add your handling code here:
+        administrarusuario ap = new administrarusuario("./usuarios");
+        try {
+            ap.cargarArchivo();
+        } catch (IOException ex) {
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         if (series1.getSelectedIndex() >= 0) {
             DefaultTreeModel modeloARBOL = (DefaultTreeModel) tree1.getModel();
             DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
             //obtener persona guardada
             DefaultListModel modeloLISTA = (DefaultListModel) series1.getModel();
             String categoria, nombre, peli = "Series";
-            
+
             categoria = ((serie) modeloLISTA.get(series1.getSelectedIndex())).getCategoria();
             nombre = ((serie) modeloLISTA.get(series1.getSelectedIndex())).getNombre();
-            
 
             int centinela = -1;
             boolean rep = false;
@@ -1496,11 +1547,33 @@ public class principal extends javax.swing.JFrame {
                 ((DefaultMutableTreeNode) raiz.getChildAt(1)).add(n);
                 users.getSerie().add(new serie(nombre, categoria));
             }
+            for (usuario t : ap.getListausuario()) {
+                if (t.getUser().equals(users.getUser())) {
+                    ap.getListausuario().set(ap.getListausuario().lastIndexOf(t), users);
+                }
+            }
+            try {
+                ap.escribirArchivo();
+            } catch (IOException ex) {
+                Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
             modeloARBOL.reload();
         } else {
             JOptionPane.showMessageDialog(app, "No hay señores seleccionados");
         }
     }//GEN-LAST:event_prefsMouseClicked
+
+    private void bt_cuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_cuentaMouseClicked
+        // TODO add your handling code here:
+        cuent.setModal(true);
+        cuent.pack();
+        cuent.setLocationRelativeTo(this);
+        cuent.setVisible(true);
+    }//GEN-LAST:event_bt_cuentaMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1553,6 +1626,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JButton bt_admin;
     private javax.swing.JButton bt_cuenta;
     private javax.swing.JTextField correo;
+    private javax.swing.JDialog cuent;
     private javax.swing.JComboBox<String> editdato;
     private javax.swing.JComboBox<String> editdatos;
     private javax.swing.JTextField fecha;
