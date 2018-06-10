@@ -764,6 +764,7 @@ public class principal extends javax.swing.JFrame {
             for (usuario t : user.getListausuario()) {
                 if (t.getUser().equals(tf_user.getText()) && t.getContra().equals(pf_pass.getText())) {
                     ver = true;
+                    users = t;
                 }
             }
             if (ver) {
@@ -1393,6 +1394,12 @@ public class principal extends javax.swing.JFrame {
 
     private void prefmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prefmMouseClicked
         // TODO add your handling code here:
+        administrarusuario ap = new administrarusuario("./usuarios");
+        try {
+            ap.cargarArchivo();
+        } catch (IOException ex) {
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         if (peliculas1.getSelectedIndex() >= 0) {
             DefaultTreeModel modeloARBOL = (DefaultTreeModel) tree1.getModel();
             DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
@@ -1417,6 +1424,7 @@ public class principal extends javax.swing.JFrame {
                     if (!rep) {
                         DefaultMutableTreeNode p = new DefaultMutableTreeNode(new pelicula(nombre, categoria));
                         ((DefaultMutableTreeNode) raiz.getChildAt(0).getChildAt(i)).add(p);
+                        users.getMovies().add(new pelicula(nombre,categoria));
                     } else {
                         JOptionPane.showMessageDialog(this, "PELICULA YA ESTA EN ARBOL");
                     }
@@ -1429,6 +1437,17 @@ public class principal extends javax.swing.JFrame {
                 DefaultMutableTreeNode p = new DefaultMutableTreeNode(new pelicula(nombre, categoria));
                 n.add(p);
                 ((DefaultMutableTreeNode) raiz.getChildAt(0)).add(n);
+            }
+            
+            for (usuario t : ap.getListausuario()) {
+                if(t.getUser().equals(users.getUser())){
+                    ap.getListausuario().set(ap.getListausuario().lastIndexOf(t), users);
+                }
+            }
+            try {
+                ap.escribirArchivo();
+            } catch (IOException ex) {
+                Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
             }
             modeloARBOL.reload();
         } else {
@@ -1461,6 +1480,7 @@ public class principal extends javax.swing.JFrame {
                     }
                     if (!rep) {
                         DefaultMutableTreeNode p = new DefaultMutableTreeNode(new serie(nombre, categoria));
+                        users.getSerie().add(new serie(nombre, categoria));
                         ((DefaultMutableTreeNode) raiz.getChildAt(1).getChildAt(i)).add(p);
                     } else {
                         JOptionPane.showMessageDialog(app, "SERIE YA ESTA EN ARBOL");
@@ -1474,6 +1494,7 @@ public class principal extends javax.swing.JFrame {
                 DefaultMutableTreeNode p = new DefaultMutableTreeNode(new serie(nombre, categoria));
                 n.add(p);
                 ((DefaultMutableTreeNode) raiz.getChildAt(1)).add(n);
+                users.getSerie().add(new serie(nombre, categoria));
             }
             modeloARBOL.reload();
         } else {
@@ -1599,4 +1620,5 @@ public class principal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
    serie series = new serie();
     pelicula pelis = new pelicula();
+    usuario users = new usuario();
 }
