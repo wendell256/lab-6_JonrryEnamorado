@@ -188,6 +188,11 @@ public class principal extends javax.swing.JFrame {
         });
 
         prefs.setText("Agregar a Pref");
+        prefs.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                prefsMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout appLayout = new javax.swing.GroupLayout(app.getContentPane());
         app.getContentPane().setLayout(appLayout);
@@ -1430,6 +1435,51 @@ public class principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No hay señores seleccionados");
         }
     }//GEN-LAST:event_prefmMouseClicked
+
+    private void prefsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prefsMouseClicked
+        // TODO add your handling code here:
+        if (series1.getSelectedIndex() >= 0) {
+            DefaultTreeModel modeloARBOL = (DefaultTreeModel) tree1.getModel();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+            //obtener persona guardada
+            DefaultListModel modeloLISTA = (DefaultListModel) series1.getModel();
+            String categoria, nombre, peli = "Series";
+            
+            categoria = ((serie) modeloLISTA.get(series1.getSelectedIndex())).getCategoria();
+            nombre = ((serie) modeloLISTA.get(series1.getSelectedIndex())).getNombre();
+            
+
+            int centinela = -1;
+            boolean rep = false;
+            for (int i = 0; i < raiz.getChildAt(1).getChildCount(); i++) {
+                if (raiz.getChildAt(0).getChildAt(i).toString().equals(categoria)) {
+
+                    for (int j = 0; j < raiz.getChildAt(1).getChildAt(i).getChildCount(); j++) {
+                        if (raiz.getChildAt(1).getChildAt(i).getChildAt(j).toString().equals(nombre)) {
+                            rep = true;
+                        }
+                    }
+                    if (!rep) {
+                        DefaultMutableTreeNode p = new DefaultMutableTreeNode(new serie(nombre, categoria));
+                        ((DefaultMutableTreeNode) raiz.getChildAt(1).getChildAt(i)).add(p);
+                    } else {
+                        JOptionPane.showMessageDialog(app, "SERIE YA ESTA EN ARBOL");
+                    }
+
+                    centinela = 1;
+                }
+            }
+            if (centinela == -1) {
+                DefaultMutableTreeNode n = new DefaultMutableTreeNode(categoria);
+                DefaultMutableTreeNode p = new DefaultMutableTreeNode(new serie(nombre, categoria));
+                n.add(p);
+                ((DefaultMutableTreeNode) raiz.getChildAt(1)).add(n);
+            }
+            modeloARBOL.reload();
+        } else {
+            JOptionPane.showMessageDialog(app, "No hay señores seleccionados");
+        }
+    }//GEN-LAST:event_prefsMouseClicked
 
     /**
      * @param args the command line arguments

@@ -27,6 +27,10 @@ public class serie{
 
     public serie() {
     }
+    public serie(String nombre, String categoria) {
+        this.nombre = nombre;
+        this.categoria = categoria;
+    }
     public serie(String name) {
         this.nombre = name;
     }
